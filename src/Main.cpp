@@ -19,16 +19,16 @@
 using namespace std;
 
 //Testing
-#include "SportsCard.h"
+#include "ComicBook.h"
 
 int main() {
 
-   //-----------------Test SportsCard Class--------------------------------------
-   SportsCard cust; // test default constructor
+   //-----------------Test ComicBook Class--------------------------------------
+   ComicBook cust; // test default constructor
    cout << "Default constructor: " << cust.toString() << "\n";
 
-   SportsCard cust1(1989, "Cen Griffey Jr.", "Upper Deck", "Near Mint");
-   cout << "Convenience constructor 'Ken Griffey Jr 1989 Upper Deck Near Mint' : " 
+   ComicBook cust1(1938, "SuperMan", "DC Comics", "Excellent");
+   cout << "Convenience constructor 'DC Comics, SuperMan, 1938, Excellent' : " 
       << cust1.toString() << "\n";
 
    // Test setters
@@ -37,14 +37,14 @@ int main() {
 
 
    // Test getters
-   cout << "Getters: Year(1989): " << cust1.getYear() << "\n";
+   cout << "Getters: Year(1938): " << cust1.getYear() << "\n";
 
    // Test getHascode
    cout << "Hashcode: " << cust1.getHashCode() << "\n";
 
    // Test relational operators
    cout << "\n-------------------Relational Operators-------------\n";
-   SportsCard cust2(1913, "Christian Ronaldo", "Addidas", "Mint"); 
+   ComicBook cust2(1913, "Chapulin", "A Huevo", "Muy Bueno");
    cout << cust1.toString() << " < " << cust2.toString() << " : "
       << (cust1 < cust2) << "\n";
    cout << cust1.toString() << " < " << cust1.toString() << " : "
@@ -57,16 +57,16 @@ int main() {
 
    // Test create
    cout << "\n-------------------Create and Clone-------------\n";
-   SportsCard* custptr = cust1.create();
+   ComicBook* custptr = cust1.create();
    cout << "Should be empty object: " << custptr->toString() << "\n";
    cout << cust1.toString() << "\n";
 
-   SportsCard* custptr2 = cust1.clone();
+   ComicBook* custptr2 = cust1.clone();
    cout << "Should be : " << cust1.toString() << " = " <<custptr2->toString() << "\n";
 
    // Test as a Hashable
    cout << "\n---------------Test as a Hashable pointer---------------------" << "\n";
-   Hashable* hashPtr = new SportsCard(350, "Incas", "Nike", "Hella Mint");
+   Hashable* hashPtr = new ComicBook(350, "Incas", "Nike", "Hella Mint");
    cout << "Setters: Year(350): " << hashPtr->toString() << "\n";
    Hashable* hashPtr2 = cust1.clone();
    cout << "Setters: " << cust1.toString() << " : " << hashPtr2->toString() << "\n";
@@ -262,6 +262,66 @@ int main() {
 //// Test as a Hashable
 //cout << "\n---------------Test as a Hashable pointer---------------------" << "\n";
 //Hashable* hashPtr = new Coin(350, "Incas", 100);
+//cout << "Setters: Year(350): " << hashPtr->toString() << "\n";
+//Hashable* hashPtr2 = cust1.clone();
+//cout << "Setters: " << cust1.toString() << " : " << hashPtr2->toString() << "\n";
+//// Test getHascode
+//cout << "Hashcode: " << cust1.getHashCode() << " = " <<
+//hashPtr2->getHashCode() << "\n";
+//
+//Hashable* hashPtr3 = hashPtr->clone();
+//cout << "Setters: " << hashPtr->toString() << " : " << hashPtr3->toString() << "\n";
+//cout << hashPtr->toString() << " < " << hashPtr2->toString() << " : ";
+//cout << (*hashPtr < *hashPtr2) << "\n";
+//cout << hashPtr->toString() << " == " << hashPtr2->toString() << " : ";
+//cout << (*hashPtr == *hashPtr2) << "\n";
+
+//------------------------------------------------------------------------------
+
+//-----------------Test SportsCard Class--------------------------------------
+//SportsCard cust; // test default constructor
+//cout << "Default constructor: " << cust.toString() << "\n";
+//
+//SportsCard cust1(1989, "Cen Griffey Jr.", "Upper Deck", "Near Mint");
+//cout << "Convenience constructor 'Ken Griffey Jr 1989 Upper Deck Near Mint' : "
+//<< cust1.toString() << "\n";
+//
+//// Test setters
+//cust.setYear(1950);
+//cout << "Year 1950: " << cust.toString() << "\n";
+//
+//
+//// Test getters
+//cout << "Getters: Year(1989): " << cust1.getYear() << "\n";
+//
+//// Test getHascode
+//cout << "Hashcode: " << cust1.getHashCode() << "\n";
+//
+//// Test relational operators
+//cout << "\n-------------------Relational Operators-------------\n";
+//SportsCard cust2(1913, "Christian Ronaldo", "Addidas", "Mint");
+//cout << cust1.toString() << " < " << cust2.toString() << " : "
+//<< (cust1 < cust2) << "\n";
+//cout << cust1.toString() << " < " << cust1.toString() << " : "
+//<< (cust1 < cust1) << "\n";
+//
+//cout << cust1.toString() << " == " << cust2.toString() << " : "
+//<< (cust1 == cust2) << "\n";
+//cout << cust1.toString() << " == " << cust1.toString() << " : "
+//<< (cust1 == cust1) << "\n";
+//
+//// Test create
+//cout << "\n-------------------Create and Clone-------------\n";
+//SportsCard* custptr = cust1.create();
+//cout << "Should be empty object: " << custptr->toString() << "\n";
+//cout << cust1.toString() << "\n";
+//
+//SportsCard* custptr2 = cust1.clone();
+//cout << "Should be : " << cust1.toString() << " = " << custptr2->toString() << "\n";
+//
+//// Test as a Hashable
+//cout << "\n---------------Test as a Hashable pointer---------------------" << "\n";
+//Hashable* hashPtr = new SportsCard(350, "Incas", "Nike", "Hella Mint");
 //cout << "Setters: Year(350): " << hashPtr->toString() << "\n";
 //Hashable* hashPtr2 = cust1.clone();
 //cout << "Setters: " << cust1.toString() << " : " << hashPtr2->toString() << "\n";

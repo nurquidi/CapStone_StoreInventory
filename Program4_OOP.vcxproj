@@ -168,6 +168,7 @@
   <ItemGroup>
     <ClCompile Include="src\Coin.cpp" />
     <ClCompile Include="src\Collectible.cpp" />
+    <ClCompile Include="src\ComicBook.cpp" />
     <ClCompile Include="src\Customer.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\SportsCard.cpp" />

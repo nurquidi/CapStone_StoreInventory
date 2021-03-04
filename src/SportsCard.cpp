@@ -1,5 +1,5 @@
 /*
- * @file SportsCard.h
+ * @file SportsCard.cpp
  * This represents a collectible sports card for the store.
  * @author Nestor Urquidi
  * @date 02/22/2021
