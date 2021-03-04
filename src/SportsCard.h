@@ -44,7 +44,6 @@ public:
    */
    SportsCard(const int yearSC, const string playerSC, 
               const string manufacturerSC, const string gradeSC);
-      // year is set using setter from Collectible class
 
    //------------------------------Destructor----------------------------------
    /* Virtual destructor.
@@ -59,17 +58,12 @@ public:
    * @post    Returns the hash code for the object.
    */
    int getHashCode() const;
-      // This hash code is not critical, set equal to average of all 4 data 
-      // members.
-      // Conver each string to an int = int(str[0]) + int(str[lenght/2])*7 + 
-      //             int(str[lenght-1])*7*7
-      // hash code = (year + player + manufacturer + grade) / 4
 
    //------------------------------toString------------------------------------
    /* Creates a string for output.
    * @pre     None.
    * @post    Returns a string with the following order: player year 
-   *          manufacturer grade, all separated by a single space.
+   *          manufacturer grade, all separated by a single space and comma.
    */
    string toString() const;
 
@@ -87,23 +81,6 @@ public:
    */
    SportsCard* clone();
 
-   //------------------------------getYear-------------------------------------
-   /* Returns the year.
-   * @pre     None.
-   * @post    Returns the year it was made.
-   */
-   int getYear() const;
-   // Use the Collectible getYear method
-
-   //------------------------------setYear-------------------------------------
-   /* Sets the year.
-   * @pre     None.
-   * @post    Sets the year.
-   * @param   const int year
-   */
-   void setYear(const int year);
-      // Use the Collectible setYear method
-
    /**---------------------------operator<-------------------------------------
     * Compares two Collectible objects.
     * @pre     A SportsCard object to compare to.
@@ -112,8 +89,6 @@ public:
     * @param   const Hashable& rhs
    */
    bool operator<(const Hashable& rhs) const;
-      // Use dynamic casting to cast down to SportsCard, check for nullptr.
-      // Use the sorting order of player, year, manufacturer and grade.
 
    /**---------------------------operator==------------------------------------
     * Compares two Collectible objects.
@@ -123,5 +98,4 @@ public:
     * @param   const Hashable& rhs
    */
    bool operator==(const Hashable& rhs) const;
-      // Use dynamic casting to cast down to SportsCard, check for nullptr.
 };

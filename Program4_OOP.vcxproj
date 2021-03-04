@@ -166,9 +166,11 @@
     <ClInclude Include="src\UserManager.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Coin.cpp" />
     <ClCompile Include="src\Collectible.cpp" />
     <ClCompile Include="src\Customer.cpp" />
     <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\SportsCard.cpp" />
     <ClCompile Include="src\User.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

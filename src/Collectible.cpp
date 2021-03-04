@@ -83,7 +83,7 @@ bool Collectible::operator<(const Hashable& rhs) const {
       return false;
    }
 
-   // Use dynamic casting to cast down to User, check for nullptr.
+   // Use dynamic casting to cast down to Collectible, check for nullptr.
    const Collectible* item = dynamic_cast<const Collectible*>(&rhs);
    if (item == nullptr) {
       cerr << "Right hand side object is not a Collectible object" << endl;
@@ -104,10 +104,10 @@ bool Collectible::operator<(const Hashable& rhs) const {
 bool Collectible::operator==(const Hashable& rhs) const {
    // check if same object
    if (this == &rhs) {
-      return false;
+      return true;
    }
 
-   // Use dynamic casting to cast down to User, check for nullptr.
+   // Use dynamic casting to cast down to Collectible, check for nullptr.
    const Collectible* item = dynamic_cast<const Collectible*>(&rhs);
    if (item == nullptr) {
       cerr << "Right hand side object is not a Collectible object" << endl;

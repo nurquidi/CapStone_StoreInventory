@@ -54,7 +54,6 @@ public:
    * @post    Returns the hash code for the Collectible object.
    */
    virtual int getHashCode() const;
-      // This hash code is not critical, set it equal to the year.
 
    //------------------------------toString------------------------------------
    /* Creates a string for output.
@@ -100,7 +99,6 @@ public:
     * @param   const Hashable& rhs
    */
    virtual bool operator<(const Hashable& rhs) const;
-      // Use dynamic casting to cast down to Collectible, check for nullptr.
 
    /**---------------------------operator==------------------------------------
     * Compares two Collectible objects.
@@ -110,5 +108,4 @@ public:
     * @param   const Collectible& rhs
    */
    virtual bool operator==(const Hashable& rhs) const;
-      // Use dynamic casting to cast down to Collectible, check for nullptr.
 };

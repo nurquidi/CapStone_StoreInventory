@@ -13,6 +13,7 @@
 #pragma once
 #include "Collectible.h"
 #include <string>
+#include <iostream>
 
 using namespace std;
 
@@ -41,7 +42,6 @@ public:
    * @param   const int gradeC
    */
    Coin(const int yearC, const string typeC, const int gradeC);
-        // year is set using setter from Collectible class
 
    //------------------------------Destructor----------------------------------
    /* Virtual destructor.
@@ -56,16 +56,12 @@ public:
    * @post    Returns the hash code for the Coin object.
    */
    int getHashCode() const;
-      // This hash code is not critical, set equal to the first, middle, and 
-      // last characters of the type string and multiply by the prime number 7.
-      // hash(str) = int(str[0]) + int(str[lenght/2])*7 + 
-      //             int(str[lenght-1])*7*7
 
    //------------------------------toString------------------------------------
    /* Creates a string for output.
    * @pre     None.
    * @post    Returns a string with the follwoing order: type year grade.
-   *          All separated by a single space.
+   *          All separated by a single space and comma.
    */
    string toString() const;
 
@@ -83,23 +79,6 @@ public:
    */
    Coin* clone();
 
-   //------------------------------getYear-------------------------------------
-   /* Returns the year.
-   * @pre     None.
-   * @post    Returns the year it was made.
-   */
-   int getYear() const;
-        // Use the Collectible getYear method
-
-   //------------------------------setYear-------------------------------------
-   /* Sets the year.
-   * @pre     None.
-   * @post    Sets the year.
-   * @param   const int year
-   */
-   void setYear(const int year);
-      // Use the Collectible setYear method
-
    /**---------------------------operator<-------------------------------------
     * Compares two Collectible objects.
     * @pre     A Coin object to compare to.
@@ -108,8 +87,6 @@ public:
     * @param   const Hashable& rhs
    */
    bool operator<(const Hashable& rhs) const;
-      // Use dynamic casting to cast down to Coin, check for nullptr.
-      // Method should sort first by type, year and then grade.
 
    /**---------------------------operator==------------------------------------
     * Compares two Collectible objects.
@@ -119,5 +96,4 @@ public:
     * @param   const Hashable& rhs
    */
    bool operator==(const Hashable& rhs) const;
-      // Use dynamic casting to cast down to Coin, check for nullptr.
 };
