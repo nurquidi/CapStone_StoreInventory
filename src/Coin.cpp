@@ -1,5 +1,5 @@
 /*
- * @file Coin.h
+ * @file Coin.cpp
  * This represents a collectible coin for the store.
  * @author Nestor Urquidi
  * @date 02/22/2021
@@ -21,6 +21,12 @@
 * @param   const int gradeC
 */
 Coin::Coin(const int yearC, const string typeC, const int gradeC) {
+   if (yearC < 0 || yearC > 9999) {
+      cerr << "Coin year " << yearC << " could be incorrect.\n";
+   }
+   if (gradeC < 0 || gradeC > 100) {
+      cerr << "Coin grade " << gradeC << " could be incorrect.\n";
+   }
    setYear(yearC); // year is stored in base class
    type = typeC;
    grade = gradeC;

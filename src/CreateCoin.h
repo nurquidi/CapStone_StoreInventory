@@ -14,6 +14,7 @@
 #include "CreateObject.h"
 #include "Coin.h"
 #include <string>
+#include <sstream>
 
 using namespace std;
 
@@ -40,14 +41,4 @@ public:
    *          Note, dynamic memory ownership is passed to the calling function.
    */
    Coin* create(string objData) const;
-      /*
-      * Can convert string to a streamstring and parse through it.
-      * while ( stream objData is not empty) {
-      *    Parse through and create the data types needed.
-      *    int year, int grade, string type
-      * }
-      *
-      * Use the convenience constructor of the Coin class to create a
-      * new object with the data.
-      */
 };

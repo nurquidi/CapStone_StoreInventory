@@ -23,6 +23,9 @@
 */
 SportsCard::SportsCard(const int yearSC, const string playerSC,
    const string manufacturerSC, const string gradeSC) {
+   if (yearSC < 0 || yearSC > 9999) {
+      cerr << "Coin year " << yearSC << " could be incorrect.\n";
+   }
    setYear(yearSC);
    player = playerSC;
    manufacturer = manufacturerSC;

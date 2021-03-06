@@ -1,5 +1,5 @@
 /*
- * @file ComicBook.h
+ * @file ComicBook.cpp
  * This represents a collectible comic book for the store.
  * @author Nestor Urquidi
  * @date 02/22/2021
@@ -23,6 +23,9 @@
  */
 ComicBook::ComicBook(const int yearC, const string titleC,
    const string publisherC, const string gradeC) {
+   if (yearC < 0 || yearC > 9999) {
+      cerr << "Coin year " << yearC << " could be incorrect.\n";
+   }
    setYear(yearC);
    title = titleC;
    publisher = publisherC;

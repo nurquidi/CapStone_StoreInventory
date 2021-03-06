@@ -23,7 +23,7 @@ public:
    * @pre     None.
    * @post    Releases any dynamic memory used.
    */
-   virtual ~CreateObject() = 0;
+   virtual ~CreateObject() = 0 {};
 
    //------------------------------create--------------------------------------
    /* Creates an object.

@@ -13,100 +13,80 @@
 
 
 #pragma once
+// --------------------Memory Leak---------------------------------------------
+// Add this block to the top of your Driver
+#define _CRTDBG_MAP_ALLOC
+#include <cstdlib>  // Detects leaks for dynamic memory
+#include <stdlib.h>   // For memory leaks using standard CRT malloc
+#include <crtdbg.h>
+
+#ifdef _DEBUG
+#define DBG_NEW new ( _NORMAL_BLOCK , __FILE__ , __LINE__ )
+// Replace _NORMAL_BLOCK with _CLIENT_BLOCK if you want the
+// allocations to be of _CLIENT_BLOCK type
+#else
+#define DBG_NEW new
+#endif
+//------------------------End Memory Leak block--------------------------------
+
 //#include "BranchOperations.h"
 #include <iostream>
 #include <vector>
 using namespace std;
 
 //Testing
-#include "ComicBook.h"
+#include "FactoryHashable.h"
 
 int main() {
-
-   //-----------------Test ComicBook Class--------------------------------------
-   ComicBook cust; // test default constructor
-   cout << "Default constructor: " << cust.toString() << "\n";
-
-   ComicBook cust1(1938, "SuperMan", "DC Comics", "Excellent");
-   cout << "Convenience constructor 'DC Comics, SuperMan, 1938, Excellent' : " 
-      << cust1.toString() << "\n";
-
-   // Test setters
-   cust.setYear(1950);
-   cout << "Year 1950: " << cust.toString() << "\n";
+   //-------------------------Memory Leak Code---------------------------------
+// Memory leak check, forces a memory leak report
+   _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+   _CrtMemState s1;  // Creates a memory state for taking snapshot.
+   //_CrtSetBreakAlloc(18); // Sets breakpoint to memory allocation number "18"
+                            // Change "18" to match your case
+   //--------------------------End Memory Leak code----------------------------
+   {
 
 
-   // Test getters
-   cout << "Getters: Year(1938): " << cust1.getYear() << "\n";
 
-   // Test getHascode
-   cout << "Hashcode: " << cust1.getHashCode() << "\n";
 
-   // Test relational operators
-   cout << "\n-------------------Relational Operators-------------\n";
-   ComicBook cust2(1913, "Chapulin", "A Huevo", "Muy Bueno");
-   cout << cust1.toString() << " < " << cust2.toString() << " : "
-      << (cust1 < cust2) << "\n";
-   cout << cust1.toString() << " < " << cust1.toString() << " : "
-      << (cust1 < cust1) << "\n";
 
-   cout << cust1.toString() << " == " << cust2.toString() << " : "
-      << (cust1 == cust2) << "\n";
-   cout << cust1.toString() << " == " << cust1.toString() << " : "
-      << (cust1 == cust1) << "\n";
 
-   // Test create
-   cout << "\n-------------------Create and Clone-------------\n";
-   ComicBook* custptr = cust1.create();
-   cout << "Should be empty object: " << custptr->toString() << "\n";
-   cout << cust1.toString() << "\n";
 
-   ComicBook* custptr2 = cust1.clone();
-   cout << "Should be : " << cust1.toString() << " = " <<custptr2->toString() << "\n";
+   }
+   //-------------------------Memory Leak Code---------------------------------
+   _CrtMemCheckpoint(&s1); // Takes snapshot of memory state
+   _CrtSetReportMode(_CRT_ERROR, _CRTDBG_MODE_DEBUG | _CRTDBG_MODE_WNDW);
+   _CrtDumpMemoryLeaks();
+   _CrtMemDumpStatistics(&s1); // prints outs memory allocation summary
 
-   // Test as a Hashable
-   cout << "\n---------------Test as a Hashable pointer---------------------" << "\n";
-   Hashable* hashPtr = new ComicBook(350, "Incas", "Nike", "Hella Mint");
-   cout << "Setters: Year(350): " << hashPtr->toString() << "\n";
-   Hashable* hashPtr2 = cust1.clone();
-   cout << "Setters: " << cust1.toString() << " : " << hashPtr2->toString() << "\n";
-   // Test getHascode
-   cout << "Hashcode: " << cust1.getHashCode() << " = " << 
-           hashPtr2->getHashCode() << "\n";
+   //--------------------------End Memory Leak code----------------------------
 
-   Hashable* hashPtr3 = hashPtr->clone();
-   cout << "Setters: " << hashPtr->toString() << " : " << hashPtr3->toString() << "\n";
-   cout << hashPtr->toString() << " < " << hashPtr2->toString() << " : ";
-   cout << (*hashPtr < *hashPtr2) << "\n";
-   cout << hashPtr->toString() << " == " << hashPtr2->toString() << " : ";
-   cout << (*hashPtr == *hashPtr2) << "\n";
-
-   //------------------------------------------------------------------------------
 }
 
 //int main() {
-//   BranchOperations branchEverett;
-//
-//   ifstream inventory("Inventory.txt");
-//   if (!inventory) {
-//      cerr << "File could not be opened." << endl;
-//      return 1;
-//   }
-//   ifstream customers("customers.txt");
-//   if (!customers) {
-//      cerr << "File could not be opened." << endl;
-//      return 1;
-//   }
-//   ifstream transactions("transactions.txt");
-//   if (!transactions) {
-//      cerr << "File could not be opened." << endl;
-//      return 1;
-//   }
-//
-//   // Load files to branch operations.
-//   branchEverett.loadCustomers(customers);
-//   branchEverett.loadInventory(inventory);
-//   branchEverett.loadTransactions(transactions);
+   //BranchOperations branchEverett;
+
+   //ifstream inventory("Inventory.txt");
+   //if (!inventory) {
+   //   cerr << "File could not be opened." << endl;
+   //   return 1;
+   //}
+   //ifstream customers("customers.txt");
+   //if (!customers) {
+   //   cerr << "File could not be opened." << endl;
+   //   return 1;
+   //}
+   //ifstream transactions("transactions.txt");
+   //if (!transactions) {
+   //   cerr << "File could not be opened." << endl;
+   //   return 1;
+   //}
+
+   //// Load files to branch operations.
+   //branchEverett.loadCustomers(customers);
+   //branchEverett.loadInventory(inventory);
+   //branchEverett.loadTransactions(transactions);
 //
 //}
 
@@ -336,4 +316,187 @@ int main() {
 //cout << hashPtr->toString() << " == " << hashPtr2->toString() << " : ";
 //cout << (*hashPtr == *hashPtr2) << "\n";
 
+//------------------------------------------------------------------------------
+
+//-----------------Test ComicBook Class--------------------------------------
+//ComicBook cust; // test default constructor
+//cout << "Default constructor: " << cust.toString() << "\n";
+//
+//ComicBook cust1(1938, "SuperMan", "DC Comics", "Excellent");
+//cout << "Convenience constructor 'DC Comics, SuperMan, 1938, Excellent' : "
+//<< cust1.toString() << "\n";
+//
+//// Test setters
+//cust.setYear(1950);
+//cout << "Year 1950: " << cust.toString() << "\n";
+//
+//
+//// Test getters
+//cout << "Getters: Year(1938): " << cust1.getYear() << "\n";
+//
+//// Test getHascode
+//cout << "Hashcode: " << cust1.getHashCode() << "\n";
+//
+//// Test relational operators
+//cout << "\n-------------------Relational Operators-------------\n";
+//ComicBook cust2(1913, "Chapulin", "A Huevo", "Muy Bueno");
+//cout << cust1.toString() << " < " << cust2.toString() << " : "
+//<< (cust1 < cust2) << "\n";
+//cout << cust1.toString() << " < " << cust1.toString() << " : "
+//<< (cust1 < cust1) << "\n";
+//
+//cout << cust1.toString() << " == " << cust2.toString() << " : "
+//<< (cust1 == cust2) << "\n";
+//cout << cust1.toString() << " == " << cust1.toString() << " : "
+//<< (cust1 == cust1) << "\n";
+//
+//// Test create
+//cout << "\n-------------------Create and Clone-------------\n";
+//ComicBook* custptr = cust1.create();
+//cout << "Should be empty object: " << custptr->toString() << "\n";
+//cout << cust1.toString() << "\n";
+//
+//ComicBook* custptr2 = cust1.clone();
+//cout << "Should be : " << cust1.toString() << " = " << custptr2->toString() << "\n";
+//
+//// Test as a Hashable
+//cout << "\n---------------Test as a Hashable pointer---------------------" << "\n";
+//Hashable* hashPtr = new ComicBook(350, "Incas", "Nike", "Hella Mint");
+//cout << "Setters: Year(350): " << hashPtr->toString() << "\n";
+//Hashable* hashPtr2 = cust1.clone();
+//cout << "Setters: " << cust1.toString() << " : " << hashPtr2->toString() << "\n";
+//// Test getHascode
+//cout << "Hashcode: " << cust1.getHashCode() << " = " <<
+//hashPtr2->getHashCode() << "\n";
+//
+//Hashable* hashPtr3 = hashPtr->clone();
+//cout << "Setters: " << hashPtr->toString() << " : " << hashPtr3->toString() << "\n";
+//cout << hashPtr->toString() << " < " << hashPtr2->toString() << " : ";
+//cout << (*hashPtr < *hashPtr2) << "\n";
+//cout << hashPtr->toString() << " == " << hashPtr2->toString() << " : ";
+//cout << (*hashPtr == *hashPtr2) << "\n";
+
+//------------------------------------------------------------------------------
+
+//-----------------Test CreateSportsCard Class--------------------------------------
+//CreateComicBook cust; // test default constructor
+//string s("2010, Excellent, X-Men, Marvel");
+//ComicBook* card = cust.create(s); // create sports card
+//cout << "Input: 2010, Excellent, X-Men, Marvel : "
+//<< card->toString() << "\n";
+//
+//// Erroneous input
+//string s1("2010, Excellent, Marvel");
+//ComicBook* card1 = cust.create(s1); // create sports card
+//cout << "Input: 2010, Excellent,  , Marvel : "
+//<< card1->toString() << "\n";
+//
+//delete card;
+//delete card1;
+
+//------------------------------------------------------------------------------
+
+//-----------------Test CreateCoin Class--------------------------------------
+//CreateCoin cust; // test default constructor
+//string s("1913, 70, Liberty Nickel");
+//Coin* card = cust.create(s); // create sports card
+//cout << "Input: 1913, 70, Liberty Nickel : "
+//<< card->toString() << "\n";
+//
+//// Erroneous input
+//string s1("2001, 600, ");
+//Coin* card1 = cust.create(s1); // create sports card
+//cout << "Input: 2001, 600,  : "
+//<< card1->toString() << "\n";
+//
+//delete card;
+//delete card1;
+
+//------------------------------------------------------------------------------
+
+//-----------------Test CreateCustomer Class--------------------------------------
+//CreateCustomer cust; // test default constructor
+//string s("191, Young Jeezy");
+//Customer* card = cust.create(s); // create sports card
+//cout << "Input: 191, Young Jeezy : "
+//<< card->toString() << "\n";
+//
+//// Erroneous input
+//string s1("2001, la di la");
+//Customer* card1 = cust.create(s1); // create sports card
+//cout << "Input: 2001, la di la : "
+//<< card1->toString() << "\n";
+//
+//delete card;
+//delete card1;
+//------------------------------------------------------------------------------
+
+//-------------------------TEST FactoryHashable-----------------------------
+//   // Create factory
+//FactoryHashable factory;
+//
+//// --------------CreateCustomer-----------------------
+//cout << "Create Customer\n";
+//string s("191, Young Jeezy");
+//Hashable* card = factory.createIt('A', s); // create customer
+//cout << "Input: 191, Young Jeezy : "
+//<< card->toString() << "\n";
+//
+//// Erroneous input
+//string s1("2001, la di la");
+//Hashable* card1 = factory.createIt('A', s1); // create customer
+//cout << "Input: 2001, la di la : "
+//<< card1->toString() << "\n";
+//
+//delete card;
+//delete card1;
+//// ----------------------------------------------------
+//
+//// --------------CreateComicBook-----------------------
+//cout << "\nCreate ComicBook\n";
+//string s2("1938, Mint, Superman, DC ");
+//card = factory.createIt('C', s2); // create comicbook
+//cout << "Input: 1938, Mint, Superman, DC  : "
+//<< card->toString() << "\n";
+//
+//// Erroneous input
+//string s3("1938, Mint, Superman");
+//card1 = factory.createIt('C', s3); // create comicbook
+//cout << "Input: 1938, Mint, Superman : "
+//<< card1->toString() << "\n";
+//
+//delete card;
+//delete card1;
+//
+////----Create SportsCard
+//cout << "\nCreate SportsCard\n";
+//string s4("1989, Near Mint, Ken Griffey Jr., Upper Deck");
+//card = factory.createIt('S', s4); // create sports card
+//cout << "Input: 2010, Excellent, X-Men, Marvel : "
+//<< card->toString() << "\n";
+//
+//// Erroneous input
+//string s5("1952, Very Good, Mickey Mantle,");
+//card1 = factory.createIt('S', s5); // create sports card
+//cout << "Input: 2010, Excellent,  , Marvel : "
+//<< card1->toString() << "\n";
+//
+//delete card;
+//delete card1;
+//
+////-----------------Create Coin-----------------
+//cout << "\nCreate Coin\n";
+//string s6("1913, 70, Liberty Nickel");
+//card = factory.createIt('M', s6); // create Coin
+//cout << "Input: 1913, 70, Liberty Nickel : "
+//<< card->toString() << "\n";
+//
+//// Erroneous input
+//string s7("2001, 600, ");
+//card1 = factory.createIt('M', s7); // create Coin
+//cout << "Input: 2001, 600,  : "
+//<< card1->toString() << "\n";
+//
+//delete card;
+//delete card1;
 //------------------------------------------------------------------------------

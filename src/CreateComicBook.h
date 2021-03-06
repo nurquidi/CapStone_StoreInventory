@@ -14,6 +14,7 @@
 #include "CreateObject.h"
 #include "ComicBook.h"
 #include <string>
+#include <sstream>
 
 using namespace std;
 
@@ -37,18 +38,9 @@ public:
                        data strings.
    *          Example string: "2010, Excellent, X-Men, Marvel"
    * @post    The string is processed and separated into the appropriate types
-   *          for initiazling the object.
+   *          for initiazling the object. if string is the wrong format an
+   *          empty object is returned.
    *          Note, dynamic memory ownership is passed to the calling function.
    */
    ComicBook* create(string objData) const;
-   /*
-   * Can convert string to a streamstring and parse through it.
-   * while ( stream objData is not empty) {
-   *    Parse through and create the data types needed.
-   *    int year, string grade, string title, string publisher
-   * }
-   *
-   * Use the convenience constructor of the ComicBook class to create a
-   * new object with the data.
-   */
 };
