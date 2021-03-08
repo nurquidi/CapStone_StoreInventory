@@ -40,9 +40,9 @@ ComicBook* CreateComicBook::create(string objData) const {
    s.get(); // throw away space
    getline(s, grade, ','); // get grade
    s.get(); // throw away space
-   getline(s, title, ','); // get player
+   getline(s, title, ','); // get title
    s.get(); // throw away space
-   getline(s, publisher); // get manufacturer
+   getline(s, publisher); // get publisher
 
-   return new ComicBook(year, grade, title, publisher);
+   return new ComicBook(year, title, publisher, grade);
 }

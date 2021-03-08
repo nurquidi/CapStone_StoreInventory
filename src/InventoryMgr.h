@@ -8,15 +8,15 @@
  * InventoryMgr Class:
  * Two data structures are used in this class.
  * - Hashtable that stores inventory according to item type.
- * - A sorted list that keeps a track of inventory. Sorting is done using
+ * - A SearchTree that keeps a track of inventory. Sorting is done using
  *   Hashable::operator<
 */
 
 #pragma once
-#include "Hashable.h"
-#include "LinkedList.h"
+#include "SearchTree.h"
 #include "FactoryHashable.h"
 #include <string>
+#include <sstream>
 #include <fstream>
 
 using namespace std;
@@ -24,8 +24,9 @@ using namespace std;
 class InventoryMgr
 {
 private:
+   static const int ARRAYSIZE = 3;
    FactoryHashable factoryObj;  // Factory class for creating Hashable objects.
-   LinkedList* hashTable[2];    // holds inventory for store.
+   SearchTree* hashTable[ARRAYSIZE];  // A collection of collections to hold inventory.
 
    //------------------------------hash----------------------------------------
    /* Takes a char and returns the index number for the createOjb array.
@@ -33,7 +34,28 @@ private:
    * @post    Converts the char into a hash number (index of array).
    */
    int hash(const char ch) const;
-   // create a hash function that will result in C = 0, M = 1, S = 2
+
+   //------------------------------loadHelper-------------------------------
+   /* Loads inventory with code input, quantity and data string.
+   * @pre     Valid char code for the hashtable. Only capital chars and
+   *          must be C, M or S.
+   *          string data must be the correct format for the object type.
+   *          Format:
+   *                 - No leading spaces in the string
+   *                 - A single comma followed by a space in between
+   *                 data strings.
+   *          Coin:  Year(int), grade(int), type(string)
+   *                 Example string: "2001, 65, Lincoln Cent"
+   *          SportsCard: Year(int), grade(string), player(string), and
+   *                 manufacturer(strint)
+   *                 Example string: "1989, Near Mint, Ken Griffey Jr.,
+   *                                  Upper Deck"
+   *          ComicBook: Year(int), grade(string), title(string), and
+   *                 publisher(string)
+   *                 Example string: "2010, Excellent, X-Men, Marvel"
+   * @post    Loads the inventory item the hashTable.
+   */
+   void loadHelper(char c, int count, string data);
 
 public:
    //------------------------------Constructor---------------------------------
@@ -42,7 +64,6 @@ public:
    * @post    Constructor. Initializes the hashTable to nullptrs.
    */
    InventoryMgr();
-
 
    //------------------------------Destructor----------------------------------
    /* Destructor.
@@ -58,11 +79,6 @@ public:
    *          customer file.
    */
    void loadInventory(ifstream& infile);
-   // Read one line at a time, extract the first character of each line and
-   // save as a char.  Convert the rest of the text into a string.
-   // Pass the char and string to factoryObj to create the appropriate 
-   // Hashable item. The factoryObj will return a pointer for each item, load
-   // the pointer into the hashTable at the correct location.
 
    //------------------------------buyItem-------------------------------------
    /*
@@ -70,10 +86,7 @@ public:
    * @post    Searches for the item and increments the count.
    *          Memory management: Passed pointer is deleted and set to nullptr.
    */
-   void buyItem(const int code, Hashable* item);
-      // Use the code (item type) and the hash() function to find the correct 
-      // index for the hashTable.
-      // Use add() method for LinkedList object to add the item.
+   void buyItem(const char code, Hashable* item);
 
    //------------------------------sellItem------------------------------------
    /*
@@ -82,10 +95,7 @@ public:
    *          lower than 0.
    *          Memory management: Passed pointer is deleted and set to nullptr.
    */
-   void sellItem(const int code, Hashable* item);
-      // Use the code (item type) and the hash() function to find the correct 
-      // index for the hashTable.
-      // Use add() method for LinkedList object to add the item.
+   void sellItem(const char code, Hashable* item);
 
    //------------------------------displayAll-----------------------------
    /*
@@ -96,7 +106,5 @@ public:
    *          new lines.
    */
    void displayAll();
-      // Iterated through the hashTable and use the print() method of the 
-      // LinkedList to display contents.
 
 };

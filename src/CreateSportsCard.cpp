@@ -42,5 +42,5 @@ SportsCard* CreateSportsCard::create(string objData) const {
    s.get(); // throw away space
    getline(s, manufacturer); // get manufacturer
    
-   return new SportsCard(year, grade, player, manufacturer);
+   return new SportsCard(year, player, manufacturer, grade);
 }

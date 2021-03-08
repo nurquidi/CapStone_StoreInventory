@@ -158,6 +158,7 @@
     <ClInclude Include="src\InventoryMgr.h" />
     <ClInclude Include="src\Item.h" />
     <ClInclude Include="src\LinkedList.h" />
+    <ClInclude Include="src\SearchTree.h" />
     <ClInclude Include="src\Sell.h" />
     <ClInclude Include="src\SportsCard.h" />
     <ClInclude Include="src\Transaction.h" />
@@ -169,10 +170,20 @@
     <ClCompile Include="src\Coin.cpp" />
     <ClCompile Include="src\Collectible.cpp" />
     <ClCompile Include="src\ComicBook.cpp" />
+    <ClCompile Include="src\CreateCoin.cpp" />
+    <ClCompile Include="src\CreateComicBook.cpp" />
+    <ClCompile Include="src\CreateCustomer.cpp" />
+    <ClCompile Include="src\CreateSportsCard.cpp" />
     <ClCompile Include="src\Customer.cpp" />
+    <ClCompile Include="src\FactoryHashable.cpp" />
+    <ClCompile Include="src\InventoryMgr.cpp" />
     <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\SearchTree.cpp" />
     <ClCompile Include="src\SportsCard.cpp" />
     <ClCompile Include="src\User.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="hw4inventory.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -35,7 +35,10 @@
 using namespace std;
 
 //Testing
-#include "FactoryHashable.h"
+#include "InventoryMgr.h"
+#include "Coin.h"
+#include "SportsCard.h"
+#include "ComicBook.h"
 
 int main() {
    //-------------------------Memory Leak Code---------------------------------
@@ -47,9 +50,66 @@ int main() {
    //--------------------------End Memory Leak code----------------------------
    {
 
+      //-------------------------Test InventoryMgr ----------------------------
+      InventoryMgr inventory;
+      inventory.displayAll();
 
+      Hashable* ptrCoinT = new Coin(1913, "Liberty Nickel", 70);
+      Hashable* ptrCoinT1 = ptrCoinT->clone();
+      cout << "Try buying and selling from empty inventory : \n";
+      inventory.buyItem('M', ptrCoinT);
+      inventory.sellItem('M', ptrCoinT1);
+      cout << "End of buying and selling from empty inventory : \n";
 
+      ifstream inFile("hw4inventory.txt");
+      if (!inFile) {
+         cerr << "File could not be opened." << endl;
+         return 1;
+      }
+      inventory.loadInventory(inFile);
+      inventory.displayAll();
 
+      cout << "\nTest buying an item \n";
+
+      Hashable* ptrCoin = new Coin(1913, "Liberty Nickel", 70);
+      Hashable* ptrSports = new SportsCard(1952, "Mickey Mantle", "Topps", "Very Good");
+      Hashable* ptrComic = new ComicBook(2010, "X-Men", "Marvel", "Excellent");
+      Hashable* ptrCoin2 = ptrCoin->create(); // empty coin
+
+      Hashable* ptrCoin3 = ptrCoin->clone();
+      Hashable* ptrSports1 = ptrSports->clone();
+      Hashable* ptrComic1 = ptrComic->clone();
+
+      Hashable* ptrSports2 = ptrSports->clone();
+      Hashable* ptrSports3 = ptrSports->clone();
+
+      cout << "\nBuy with empty coin object:\n";
+      inventory.buyItem('M', ptrCoin2);
+      inventory.displayAll();
+
+      cout << "\nComic : " << ptrComic->toString() << "\n";
+      cout << "\nCoin : " << ptrCoin->toString() << "\n";
+      cout << "\Sports Card : " << ptrSports->toString() << "\n";
+      cout << "\nBuy a coin, sports card and comic book\n";
+      inventory.buyItem('M', ptrCoin);
+      inventory.buyItem('C', ptrComic);
+      inventory.buyItem('S', ptrSports);
+      inventory.displayAll();
+
+      cout << "\nSell a coin, sports card and comic book\n";
+      inventory.sellItem('M', ptrCoin3);
+      inventory.sellItem('C', ptrComic1);
+      inventory.sellItem('S', ptrSports1);
+      inventory.displayAll();
+
+      cout << "\nSell a sports card, should be quantity 0 after sell.\n";
+      inventory.sellItem('S', ptrSports2);
+      inventory.displayAll();
+      cout << "\nSell a sports card, should not drop below 0 after sell.\n";
+      inventory.sellItem('S', ptrSports3);
+      inventory.displayAll();
+   
+      //----------------------------------------------------------------------
 
 
 
@@ -500,3 +560,46 @@ int main() {
 //delete card;
 //delete card1;
 //------------------------------------------------------------------------------
+
+//-------------------------Test Search Tree----------------------------
+//SearchTree tree;
+//cout << "Empty tree : " << tree << "\n";
+//Coin* coin1 = new Coin(1913, "Lincoln Cent", 65); // create coin
+//Coin* coin2 = new Coin(1913, "Liberty Nickel", 70);
+//Coin* coin3 = new Coin(2000, "Gabriel Quarter", 100); // create coin
+//Coin* coin4 = new Coin(1950, "Clara Nickel", 70);
+//Coin* coin5 = new Coin(2006, "Mommy cent", 99); // create coin
+//Coin* coin6 = new Coin(2019, "Nestor Dime", 5);
+//
+//tree.insert(coin1);
+//cout << "1913 Lincoln Cent 65 : " << tree << "\n";
+//tree.insert(coin2);  tree.insert(coin3); tree.insert(coin4);
+//tree.insert(coin5); tree.insert(coin6);
+//cout << " 6 coins: \n" << tree << "\n";
+//
+//Coin* coin7 = new Coin(2006, "Mommy cent", 60); // create coin
+//Coin* coin8 = new Coin(2019, "Nestor Dime", 80);
+//tree.insert(coin7);    tree.insert(coin8);
+//cout << " 8 coins: \n" << tree << "\n";
+//
+//cout << "Increment count of existing Coins\n";
+//Coin* temp = coin1->clone();
+//tree.insert(temp, 50);
+//temp = coin2->clone();
+//tree.insert(temp);
+//cout << " 8 coins: \n" << tree << "\n";
+//
+//cout << "Decrement count of existing Coins\n";
+//temp = coin4->clone();
+//tree.decreaseCount(temp);
+//temp = coin1->clone();
+//tree.decreaseCount(temp);
+//cout << " 8 coins: \n" << tree << "\n";
+//
+//cout << "Decrement count of existing Coins. Clara Nickel should not be < 0\n";
+//temp = coin4->clone();
+//tree.decreaseCount(temp);
+//temp = coin1->clone();
+//tree.decreaseCount(temp);
+//cout << " 8 coins: \n" << tree << "\n";
+//----------------------------------------------------------------------

@@ -144,6 +144,6 @@ bool ComicBook::operator==(const Hashable& rhs) const {
    else {
       // Use the sorting order of publisher, title, year and grade.
       return (publisher == item->publisher) && (title == item->title) &&
-         (getYear() == item->getYear()) && (grade < item->grade);
+         (getYear() == item->getYear()) && (grade == item->grade);
    }
 }
