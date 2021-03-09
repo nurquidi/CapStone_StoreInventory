@@ -179,6 +179,7 @@
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\SearchTree.cpp" />
     <ClCompile Include="src\SportsCard.cpp" />
+    <ClCompile Include="src\TransactionList.cpp" />
     <ClCompile Include="src\User.cpp" />
   </ItemGroup>
   <ItemGroup>

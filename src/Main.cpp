@@ -35,7 +35,7 @@
 using namespace std;
 
 //Testing
-#include "InventoryMgr.h"
+#include "TransactionList.h"
 #include "Coin.h"
 #include "SportsCard.h"
 #include "ComicBook.h"
@@ -50,26 +50,11 @@ int main() {
    //--------------------------End Memory Leak code----------------------------
    {
 
-      //-------------------------Test InventoryMgr ----------------------------
-      InventoryMgr inventory;
-      inventory.displayAll();
-
-      Hashable* ptrCoinT = new Coin(1913, "Liberty Nickel", 70);
-      Hashable* ptrCoinT1 = ptrCoinT->clone();
-      cout << "Try buying and selling from empty inventory : \n";
-      inventory.buyItem('M', ptrCoinT);
-      inventory.sellItem('M', ptrCoinT1);
-      cout << "End of buying and selling from empty inventory : \n";
-
-      ifstream inFile("hw4inventory.txt");
-      if (!inFile) {
-         cerr << "File could not be opened." << endl;
-         return 1;
-      }
-      inventory.loadInventory(inFile);
-      inventory.displayAll();
-
-      cout << "\nTest buying an item \n";
+      //-------------------------Test TransactionList ----------------------------
+      TransactionList transaction;
+      transaction.print();  // test empty list
+      cout << "Empty List = 0 : " << transaction.getCurrentSize();
+      cout << "\nTest if empty = 1 (true) : " << transaction.isEmpty();
 
       Hashable* ptrCoin = new Coin(1913, "Liberty Nickel", 70);
       Hashable* ptrSports = new SportsCard(1952, "Mickey Mantle", "Topps", "Very Good");
@@ -83,32 +68,22 @@ int main() {
       Hashable* ptrSports2 = ptrSports->clone();
       Hashable* ptrSports3 = ptrSports->clone();
 
-      cout << "\nBuy with empty coin object:\n";
-      inventory.buyItem('M', ptrCoin2);
-      inventory.displayAll();
+      cout << "\nAdd Coin and Sports Card \n";
+      transaction.add(5, "Buy", ptrCoin);
+      transaction.add(1, "Buy", ptrSports);
+      transaction.print();
+      cout << "list size = 2 : " << transaction.getCurrentSize() << "\n";
+      cout << "\nTest isEmpty() should return false (0) : " 
+           << transaction.isEmpty() << "\n";
 
-      cout << "\nComic : " << ptrComic->toString() << "\n";
-      cout << "\nCoin : " << ptrCoin->toString() << "\n";
-      cout << "\Sports Card : " << ptrSports->toString() << "\n";
-      cout << "\nBuy a coin, sports card and comic book\n";
-      inventory.buyItem('M', ptrCoin);
-      inventory.buyItem('C', ptrComic);
-      inventory.buyItem('S', ptrSports);
-      inventory.displayAll();
-
-      cout << "\nSell a coin, sports card and comic book\n";
-      inventory.sellItem('M', ptrCoin3);
-      inventory.sellItem('C', ptrComic1);
-      inventory.sellItem('S', ptrSports1);
-      inventory.displayAll();
-
-      cout << "\nSell a sports card, should be quantity 0 after sell.\n";
-      inventory.sellItem('S', ptrSports2);
-      inventory.displayAll();
-      cout << "\nSell a sports card, should not drop below 0 after sell.\n";
-      inventory.sellItem('S', ptrSports3);
-      inventory.displayAll();
-   
+      transaction.add(600, "Sell", ptrComic);
+      transaction.add(0, "Buy", ptrCoin2);
+      transaction.add(1, "Sell", ptrCoin3);
+      transaction.add( -600, "Buy", ptrSports1);
+      transaction.add(1, "Sell", ptrComic1);
+      transaction.add(5, "Sell", ptrSports2);
+      transaction.add(1, "Sell", ptrSports3);
+      transaction.print();
       //----------------------------------------------------------------------
 
 
@@ -663,4 +638,40 @@ int main() {
 //inventory.sellItem('S', ptrSports3);
 //inventory.displayAll();
 
+//----------------------------------------------------------------------
+
+//-------------------------Test TransactionList ----------------------------
+//TransactionList transaction;
+//transaction.print();  // test empty list
+//cout << "Empty List = 0 : " << transaction.getCurrentSize();
+//cout << "\nTest if empty = 1 (true) : " << transaction.isEmpty();
+//
+//Hashable* ptrCoin = new Coin(1913, "Liberty Nickel", 70);
+//Hashable* ptrSports = new SportsCard(1952, "Mickey Mantle", "Topps", "Very Good");
+//Hashable* ptrComic = new ComicBook(2010, "X-Men", "Marvel", "Excellent");
+//Hashable* ptrCoin2 = ptrCoin->create(); // empty coin
+//
+//Hashable* ptrCoin3 = ptrCoin->clone();
+//Hashable* ptrSports1 = ptrSports->clone();
+//Hashable* ptrComic1 = ptrComic->clone();
+//
+//Hashable* ptrSports2 = ptrSports->clone();
+//Hashable* ptrSports3 = ptrSports->clone();
+//
+//cout << "\nAdd Coin and Sports Card \n";
+//transaction.add(5, "Buy", ptrCoin);
+//transaction.add(1, "Buy", ptrSports);
+//transaction.print();
+//cout << "list size = 2 : " << transaction.getCurrentSize() << "\n";
+//cout << "\nTest isEmpty() should return false (0) : "
+//<< transaction.isEmpty() << "\n";
+//
+//transaction.add(600, "Sell", ptrComic);
+//transaction.add(0, "Buy", ptrCoin2);
+//transaction.add(1, "Sell", ptrCoin3);
+//transaction.add(-600, "Buy", ptrSports1);
+//transaction.add(1, "Sell", ptrComic1);
+//transaction.add(5, "Sell", ptrSports2);
+//transaction.add(1, "Sell", ptrSports3);
+//transaction.print();
 //----------------------------------------------------------------------

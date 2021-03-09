@@ -7,12 +7,18 @@
  * CSS 502B
  * ----------------------------------------------------------------------------
  * TransactionList Class:
- * This data structure is used to hold the transaction history of a customer, 
+ * This data structure is used to hold the transaction history of a customer,
  * in chronological order.
+ * -- Linked node data structure
+ * -- Stores a Hashable* pointer to the transaction object
+ * -- Stores quantity of each object
+ * -- Stores whether the object was purchased or sold (e.g. "Buy" "Sold")
 */
 
 #pragma once
 #include "Hashable.h"
+#include <iostream>
+#include <iomanip>
 
 
 class TransactionList
@@ -24,22 +30,47 @@ private:
    */
    struct Node
    {
-      int count;      // Keeps track of number of one item there are.
+      int quantity;   // Keeps track of number of one item there are.
+      string type;    // Stores transaction type, "Sell" or "Buy" is stored.
       Hashable* item; // Pointer to Hashable item.
       Node* next;     // Pointer to next node.
+
+      //------------------------------Constructor---------------------------
+      /* Default constructor.
+      * @pre     None.
+      * @post    Constructor. Initializes quantity = 0, type empty, item = 
+      *          nullptr and next = nullptr.
+      */
+      Node() : quantity(0), type(), item(nullptr), next(nullptr) {};
+
+      //------------------------------Constructor---------------------------
+      /* Default constructor.
+      * @pre     None.
+      * @post    Constructor. Initializes to the passed parameters and
+      *          next = nullptr
+      */
+      Node(const int count, const string transaction, Hashable* obj);
    };
+
+   //------------------------------destroy------------------------------------
+   /* Traverses list and deletes dynamic memory.
+   * @pre     None.
+   * @post    Deletes dynamic memory
+   */
+   void destroy(Node* ptr);
 
    int listSize;      // Number of entries in the list.
    Node* headPtr;     // Pointer to the first Node in the list.
+   Node* backPtr;     // Pointer to the last Node in the list.
 
 public:
    //------------------------------Constructor---------------------------------
    /* Default constructor.
    * @pre     None.
-   * @post    Constructor. Initializes Node <int>* headPtr = nullptr
-   *          and listSize(0).
+   * @post    Constructor. Initializes Node <int>* headPtr = nullptr,
+   *          backPtr = nullptr and listSize(0).
    */
-   TransactionList();
+   TransactionList() : listSize(0), headPtr(nullptr), backPtr(nullptr) {};
 
    //------------------------------Destructor----------------------------------
    /* Destructor.
@@ -65,19 +96,16 @@ public:
 
    //------------------------------add-----------------------------------------
    /* Adds the Hashable pointer to the list.
-   * @pre     None.
-   * @post    Adds to the back of the list.
-   * @param   int counter
-   * @param   Hashable* ptr
+   * @pre     Counter (quantity) > 0
+   * @post    Adds to the back of the list. If counter is < 1 it is stored as 0.
    */
-   bool add(int counter, Hashable* ptr);
+   bool add(const int counter, string transaction, Hashable* ptr);
  
 
    //------------------------------print---------------------------------------
    /* Traverses the list and outputs to console.
    * @pre     None.
-   * @post    At each node the count is output to console followed by a space
-   *          followed by the toString() method from the Hashable object.
+   * @post    Example output: "Object Stored : Quantity 5 : Transaction Buy"
    */
    void print() const;
 
