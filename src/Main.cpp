@@ -69,20 +69,20 @@ int main() {
       Hashable* ptrSports3 = ptrSports->clone();
 
       cout << "\nAdd Coin and Sports Card \n";
-      transaction.add(5, "Buy", ptrCoin);
-      transaction.add(1, "Buy", ptrSports);
+      transaction.add("Buy", ptrCoin);
+      transaction.add("Buy", ptrSports);
       transaction.print();
       cout << "list size = 2 : " << transaction.getCurrentSize() << "\n";
       cout << "\nTest isEmpty() should return false (0) : " 
            << transaction.isEmpty() << "\n";
 
-      transaction.add(600, "Sell", ptrComic);
-      transaction.add(0, "Buy", ptrCoin2);
-      transaction.add(1, "Sell", ptrCoin3);
-      transaction.add( -600, "Buy", ptrSports1);
-      transaction.add(1, "Sell", ptrComic1);
-      transaction.add(5, "Sell", ptrSports2);
-      transaction.add(1, "Sell", ptrSports3);
+      transaction.add("Sell", ptrComic);
+      transaction.add("Buy", ptrCoin2);
+      transaction.add("Sell", ptrCoin3);
+      transaction.add("Buy", ptrSports1);
+      transaction.add("Sell", ptrComic1);
+      transaction.add("Sell", ptrSports2);
+      transaction.add("Sell", ptrSports3);
       transaction.print();
       //----------------------------------------------------------------------
 
@@ -659,19 +659,19 @@ int main() {
 //Hashable* ptrSports3 = ptrSports->clone();
 //
 //cout << "\nAdd Coin and Sports Card \n";
-//transaction.add(5, "Buy", ptrCoin);
-//transaction.add(1, "Buy", ptrSports);
+//transaction.add("Buy", ptrCoin);
+//transaction.add("Buy", ptrSports);
 //transaction.print();
 //cout << "list size = 2 : " << transaction.getCurrentSize() << "\n";
 //cout << "\nTest isEmpty() should return false (0) : "
 //<< transaction.isEmpty() << "\n";
 //
-//transaction.add(600, "Sell", ptrComic);
-//transaction.add(0, "Buy", ptrCoin2);
-//transaction.add(1, "Sell", ptrCoin3);
-//transaction.add(-600, "Buy", ptrSports1);
-//transaction.add(1, "Sell", ptrComic1);
-//transaction.add(5, "Sell", ptrSports2);
-//transaction.add(1, "Sell", ptrSports3);
+//transaction.add("Sell", ptrComic);
+//transaction.add("Buy", ptrCoin2);
+//transaction.add("Sell", ptrCoin3);
+//transaction.add("Buy", ptrSports1);
+//transaction.add("Sell", ptrComic1);
+//transaction.add("Sell", ptrSports2);
+//transaction.add("Sell", ptrSports3);
 //transaction.print();
 //----------------------------------------------------------------------

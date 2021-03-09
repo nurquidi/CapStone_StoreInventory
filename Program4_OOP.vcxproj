@@ -181,6 +181,7 @@
     <ClCompile Include="src\SportsCard.cpp" />
     <ClCompile Include="src\TransactionList.cpp" />
     <ClCompile Include="src\User.cpp" />
+    <ClCompile Include="src\UserManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="hw4inventory.txt" />

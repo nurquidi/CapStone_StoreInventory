@@ -23,9 +23,8 @@
 * @post    Constructor. Initializes to the passed parameters and 
 *          next = nullptr
 */
-TransactionList::Node::Node(const int count, const string transaction,
+TransactionList::Node::Node(const string transaction,
                             Hashable* obj) {
-   quantity = count;
    type = transaction;
    item = obj;
    next = nullptr;
@@ -82,18 +81,17 @@ bool TransactionList::isEmpty() const {
 * @pre     Counter (quantity) > 0
 * @post    Adds to the back of the list. If counter is < 1 it is stored as 0.
 */
-bool TransactionList::add(const int counter, string transaction,
+bool TransactionList::add(string transaction,
                           Hashable* ptr) {
    // If empty store at the front
-   int tempCount = (counter < 1) ? 0 : counter; // check if counter > 0
    if (headPtr == nullptr) {
-      headPtr = new Node(tempCount, transaction, ptr);
+      headPtr = new Node(transaction, ptr);
       backPtr = headPtr; // only one item, so backPtr points to it.
       listSize++;
       return true;
    }
    else {
-      Node* temp = new Node(tempCount, transaction, ptr);
+      Node* temp = new Node(transaction, ptr);
       backPtr->next = temp;
       backPtr = temp; // point to new back item.
       listSize++;
@@ -110,9 +108,8 @@ void TransactionList::print() const {
    // Print from front to back
    Node* ptr = headPtr;
    while (ptr != nullptr) {
-      cout << setw(45) << left << ptr->item->toString() << " : Quantity " 
-         << setw(4) << left << ptr->quantity << " : " 
-         << "Transaction " << ptr->type << "\n";
+      cout << setw(45) << left << ptr->item->toString() << " : Quantity 1" 
+         << " : " << "Transaction " << ptr->type << "\n";
       ptr = ptr->next;
    }
 }

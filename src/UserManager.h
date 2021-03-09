@@ -16,7 +16,7 @@
 
 #pragma once
 #include "Hashable.h"
-#include "LinkedList.h"
+#include "SearchTree.h"
 #include "FactoryHashable.h"
 #include "TransactionList.h"
 #include <string>
@@ -28,7 +28,7 @@ class UserManager
 {
 private:
    FactoryHashable factoryObj;  // Factory class for creating Hashable objects.
-   LinkedList customerList;     // Sorted linked list for customers, sorts 
+   SearchTree customerList;     // Sorted linked list for customers, sorts 
                                 // in alphabetical order.
    TransactionList* hashTable[998]; // Maximum of 999 customers.
    // Customer objects have a hash code that is equal to the customer ID.

@@ -30,7 +30,6 @@ private:
    */
    struct Node
    {
-      int quantity;   // Keeps track of number of one item there are.
       string type;    // Stores transaction type, "Sell" or "Buy" is stored.
       Hashable* item; // Pointer to Hashable item.
       Node* next;     // Pointer to next node.
@@ -41,7 +40,7 @@ private:
       * @post    Constructor. Initializes quantity = 0, type empty, item = 
       *          nullptr and next = nullptr.
       */
-      Node() : quantity(0), type(), item(nullptr), next(nullptr) {};
+      Node() : type(), item(nullptr), next(nullptr) {};
 
       //------------------------------Constructor---------------------------
       /* Default constructor.
@@ -49,7 +48,7 @@ private:
       * @post    Constructor. Initializes to the passed parameters and
       *          next = nullptr
       */
-      Node(const int count, const string transaction, Hashable* obj);
+      Node(const string transaction, Hashable* obj);
    };
 
    //------------------------------destroy------------------------------------
@@ -78,7 +77,6 @@ public:
    * @post    Deletes dynamic memory
    */
    ~TransactionList();
-      // Traverse all nodes and delete memory
 
    //------------------------------getCurrentSize------------------------------
    /* Gets the current number of objects in this list.
@@ -96,16 +94,16 @@ public:
 
    //------------------------------add-----------------------------------------
    /* Adds the Hashable pointer to the list.
-   * @pre     Counter (quantity) > 0
-   * @post    Adds to the back of the list. If counter is < 1 it is stored as 0.
+   * @pre     None.
+   * @post    Adds to the back of the list.
    */
-   bool add(const int counter, string transaction, Hashable* ptr);
+   bool add(string transaction, Hashable* ptr);
  
 
    //------------------------------print---------------------------------------
    /* Traverses the list and outputs to console.
    * @pre     None.
-   * @post    Example output: "Object Stored : Quantity 5 : Transaction Buy"
+   * @post    Example output: "Object Stored : Quantity 1 : Transaction Buy"
    */
    void print() const;
 
