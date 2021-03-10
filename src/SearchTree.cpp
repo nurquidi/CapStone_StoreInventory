@@ -652,3 +652,34 @@ int SearchTree::numHashablesRecursive(
          numHashablesRecursive(subTreePtr->right);
    }
 }
+
+/**-------------------------sortedItems----------------------------------
+ * Returns a vector with Hashable pointers to objects that are sorted.
+ * @pre     None
+ * @post    Returns a vector with sorted Hashable objects.
+ *          Memory Management: memory ownership of Hashable objects remains
+ *          with SearchTree class.
+*/
+vector<Hashable*> SearchTree::sortedItems() const {
+   vector<Hashable*> temp;  // temporary storage
+
+   sortHelper(root, temp);
+   return temp;
+}
+
+/**-------------------------sortHelper----------------------------------
+ * @pre     None
+ * @post    Populates a vector with sorted Hashable objects.
+ *          Memory Management: memory ownership of Hashable objects remains
+ *          with SearchTree class.
+*/
+void SearchTree::sortHelper(DataNode* subTreePtr, 
+                            vector<Hashable*>& hashVector) const {
+   // Use in-order traversal to print out in ascending order.
+   // base case: subTreePtr == nullptr
+   if (subTreePtr != nullptr) { // If tree not empty.
+      sortHelper(subTreePtr->left, hashVector); // go down the left of the tree
+      hashVector.push_back(subTreePtr->hashObjPtr);
+      sortHelper(subTreePtr->right, hashVector); // go down the right of the tree
+   }
+}

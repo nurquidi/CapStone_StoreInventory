@@ -30,7 +30,8 @@ private:
    FactoryHashable factoryObj;  // Factory class for creating Hashable objects.
    SearchTree customerList;     // Sorted linked list for customers, sorts 
                                 // in alphabetical order.
-   TransactionList* hashTable[998]; // Maximum of 999 customers.
+   static const int hashTableSize = 1000;
+   TransactionList* hashTable[hashTableSize]; // Maximum of 999 customers.
    // Customer objects have a hash code that is equal to the customer ID.
    // this hash code is used as the index to the hashTable array.
 
@@ -53,25 +54,21 @@ public:
    //------------------------------loadCustomers-------------------------------
    /* Loads customerList with input from file.
    * @pre     File formatted correctly.
-   * @post    Loads the customerList sorted linked list with the give 
-   *          customer file.
+   *          Each line in the file represents a customer.
+   *          Example format for one line: "999, Pele"
+   *          -- 999 is the customer ID. Customer ID must be between 0 and 999.
+   *          -- Pele is the customer name.
+   * @post    Loads the customerList in sorted order with the customer file.
    */
    void loadCustomers(ifstream& infile);
-      // Read one line at a time, convert the line into a string.
-      // Pass the string and ch 'A' to factoryObj to create a customer object.
-      // The factoryObj will return a pointer for each item, load the customer 
-      // object into customerList.
 
    //------------------------------addTransaction------------------------------
    /* Everytime a customer buys or sells the transaction is recorded.
    * @pre     Customer must be an existing customer.
    * @post    Loads the transaction into the hashTable array at the approriate
-   *          customer location.
+   *          customer location.  Transaction = "Buy" or "Sell".
    */
-   void addTransaction(const int custID, Hashable* item);
-      // Use the hashcode (custID) to load the item at the correct index of the
-      // hashTable.  If nullptr at this location then append a 
-      // new TransactionList and load the new item.
+   void addTransaction(const int custID, string transaction, Hashable* item);
 
    //------------------------------displayCustomer-----------------------------
    /*
@@ -93,12 +90,4 @@ public:
    *          alphabetical order.
    */
    void displayAll();
-   // Use the removeMin() method of customer list to obtain each customer
-   // object in alphabetical order, output customer info to cout.  Use 
-   // customerID to output transactions from the hashTable.
-   
-   //----It just occurred to me that this will destroy my customer list.
-   // If there is a requirement to maintain the list I will adjust during
-   // implementation.
-
 };

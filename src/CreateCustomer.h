@@ -31,6 +31,7 @@ public:
    //------------------------------create--------------------------------------
    /* Creates a ComicBook object.
    * @pre     String must be in the correct format.
+   *          Customer ID must be between 0 and 999.
    *          Format: customerID(int), name(string).
    *                 - No leading spaces in the string
    *                 - A single comma followed by a space in between

@@ -61,15 +61,26 @@ private:
    int listSize;      // Number of entries in the list.
    Node* headPtr;     // Pointer to the first Node in the list.
    Node* backPtr;     // Pointer to the last Node in the list.
+   string userInfo;   // Stores string that identifies the owner of this list.
 
 public:
    //------------------------------Constructor---------------------------------
    /* Default constructor.
    * @pre     None.
    * @post    Constructor. Initializes Node <int>* headPtr = nullptr,
-   *          backPtr = nullptr and listSize(0).
+   *          backPtr = nullptr, listSize(0) and userInfo to empty.
    */
-   TransactionList() : listSize(0), headPtr(nullptr), backPtr(nullptr) {};
+   TransactionList() : listSize(0), headPtr(nullptr), backPtr(nullptr),
+                       userInfo() {};
+
+   //------------------------------Constructor---------------------------------
+   /* Default constructor.
+   * @pre     None.
+   * @post    Constructor. Initializes Node <int>* headPtr = nullptr,
+   *          backPtr = nullptr, listSize(0) and sets user information.
+   */
+   TransactionList(const string user) : listSize(0), headPtr(nullptr), 
+                   backPtr(nullptr), userInfo(user) {};
 
    //------------------------------Destructor----------------------------------
    /* Destructor.
@@ -95,7 +106,7 @@ public:
    //------------------------------add-----------------------------------------
    /* Adds the Hashable pointer to the list.
    * @pre     None.
-   * @post    Adds to the back of the list.
+   * @post    Adds to the back of the list. Transaction is "Buy" or "Sell".
    */
    bool add(string transaction, Hashable* ptr);
  

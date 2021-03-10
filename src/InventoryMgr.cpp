@@ -216,19 +216,19 @@ void InventoryMgr::sellItem(const char code, Hashable* item) {
 */
 void InventoryMgr::displayAll() {
    
-   // print out Comic books first.
-   if (hashTable[hash('C')] != nullptr) {
-      cout << "\nComic Book Inventory: \n";
-      cout << *hashTable[hash('C')]; // prints out in sorted order.
-   }
-
-   // print out Coins
+   // print out Coins.
    if (hashTable[hash('M')] != nullptr) {
       cout << "\nCoin Inventory: \n";
       cout << *hashTable[hash('M')]; // prints out in sorted order.
    }
 
-   // print out Sports Cards
+   // print out Comic books.
+   if (hashTable[hash('C')] != nullptr) {
+      cout << "\nComic Book Inventory: \n";
+      cout << *hashTable[hash('C')]; // prints out in sorted order.
+   }
+
+   // print out Sports Cards.
    if (hashTable[hash('S')] != nullptr) {
       cout << "\nSports Cards Inventory: \n";
       cout << *hashTable[hash('S')]; // prints out in sorted order.

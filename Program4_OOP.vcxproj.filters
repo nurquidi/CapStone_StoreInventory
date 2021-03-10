@@ -143,5 +143,6 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="hw4inventory.txt" />
+    <Text Include="hw4customers.txt" />
   </ItemGroup>
 </Project>

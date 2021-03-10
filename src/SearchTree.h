@@ -32,6 +32,7 @@
 #include <string>
 #include <iomanip>
 #include "Hashable.h"
+#include <vector>
 
 using namespace std;
 
@@ -228,19 +229,6 @@ private:
    DataNode* getPointer(DataNode* const subTreePtr,
       const Hashable& item);
 
-   /**--------------------------depthRecursive------------------------------------
-    * Finds the depth of the node that stores the Hashable.
-    * @pre     Pointer to the root of the tree
-    * @post    Returns the depth of the node storing the Hashable in the Tree.
-    * @param   DataNode* subTreePtr
-    * @param   Hashable& item
-    * @param   int depthCounter
-    * @return  The root has depth 0. Return -1 if the Hashable is not found.
-   */
-   int depthRecursive(const DataNode* const subTreePtr,
-      const Hashable& item, int depthCounter) const;
-
-
    /**-------------------------numHashablesRecursive----------------------------
     * Returns the number of Hashables in the tree. Uses pre-order traversal.
     * @pre     Pointer to root or sub-tree root.
@@ -251,6 +239,14 @@ private:
     * @return  Integer total of number of unique Hashables in the tree.
    */
    int numHashablesRecursive(const DataNode* const subTreePtr) const;
+
+   /**-------------------------sortHelper----------------------------------
+    * @pre     None
+    * @post    Populates a vector with sorted Hashable objects.
+    *          Memory Management: memory ownership of Hashable objects remains
+    *          with SearchTree class.
+   */
+   void sortHelper(DataNode* subTreePtr, vector<Hashable*>& hashVector) const;
 
    //------------------------END OF RECURSIVE HELPER METHODS----------------------
 
@@ -381,5 +377,13 @@ public:
     * @return  Integer total of number of unique Hashables in the tree.
    */
    int numHashables() const;
+
+   /**-------------------------sortedItems----------------------------------
+    * Returns a vector with Hashable pointers to objects that are sorted.
+    * @pre     None
+    * @post    Returns a vector with Hashable pointers to objects that 
+    *          are sorted.
+   */
+   vector<Hashable*> sortedItems() const;
 
 };

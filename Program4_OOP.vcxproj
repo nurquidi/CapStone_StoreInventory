@@ -184,6 +184,7 @@
     <ClCompile Include="src\UserManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="hw4customers.txt" />
     <Text Include="hw4inventory.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

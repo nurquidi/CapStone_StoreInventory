@@ -78,8 +78,8 @@ bool TransactionList::isEmpty() const {
 
 //------------------------------add-----------------------------------------
 /* Adds the Hashable pointer to the list.
-* @pre     Counter (quantity) > 0
-* @post    Adds to the back of the list. If counter is < 1 it is stored as 0.
+* @pre     None.
+* @post    Adds to the back of the list. Transaction is "Buy" or "Sell".
 */
 bool TransactionList::add(string transaction,
                           Hashable* ptr) {
@@ -105,11 +105,17 @@ bool TransactionList::add(string transaction,
 * @post    Example output: "Object Stored : Quantity 5 : Transaction Buy"
 */
 void TransactionList::print() const {
-   // Print from front to back
-   Node* ptr = headPtr;
-   while (ptr != nullptr) {
-      cout << setw(45) << left << ptr->item->toString() << " : Quantity 1" 
-         << " : " << "Transaction " << ptr->type << "\n";
-      ptr = ptr->next;
+   // Print user information first
+   if (!isEmpty()) {
+      cout << "Customer Information : " << userInfo << "\n";
+
+      // Print from front to back
+      Node* ptr = headPtr;
+      while (ptr != nullptr) {
+         cout << setw(45) << left << ptr->item->toString() << " : Quantity 1"
+            << " : " << "Transaction " << ptr->type << "\n";
+         ptr = ptr->next;
+      }
    }
+   
 }

@@ -35,7 +35,7 @@
 using namespace std;
 
 //Testing
-#include "TransactionList.h"
+#include "UserManager.h"
 #include "Coin.h"
 #include "SportsCard.h"
 #include "ComicBook.h"
@@ -50,40 +50,50 @@ int main() {
    //--------------------------End Memory Leak code----------------------------
    {
 
-      //-------------------------Test TransactionList ----------------------------
-      TransactionList transaction;
-      transaction.print();  // test empty list
-      cout << "Empty List = 0 : " << transaction.getCurrentSize();
-      cout << "\nTest if empty = 1 (true) : " << transaction.isEmpty();
 
-      Hashable* ptrCoin = new Coin(1913, "Liberty Nickel", 70);
-      Hashable* ptrSports = new SportsCard(1952, "Mickey Mantle", "Topps", "Very Good");
-      Hashable* ptrComic = new ComicBook(2010, "X-Men", "Marvel", "Excellent");
-      Hashable* ptrCoin2 = ptrCoin->create(); // empty coin
+      //-------------------------Test UserManager ----------------------------
+      UserManager userInventory;
+      userInventory.displayAll();  // test empty list
 
-      Hashable* ptrCoin3 = ptrCoin->clone();
-      Hashable* ptrSports1 = ptrSports->clone();
-      Hashable* ptrComic1 = ptrComic->clone();
 
-      Hashable* ptrSports2 = ptrSports->clone();
-      Hashable* ptrSports3 = ptrSports->clone();
+      //Hashable* ptrCoin = new Coin(1913, "Liberty Nickel", 70);
+      //Hashable* ptrSports = new SportsCard(1952, "Mickey Mantle", "Topps", "Very Good");
+      //Hashable* ptrComic = new ComicBook(2010, "X-Men", "Marvel", "Excellent");
+      //Hashable* ptrCoin2 = ptrCoin->create(); // empty coin
 
-      cout << "\nAdd Coin and Sports Card \n";
-      transaction.add("Buy", ptrCoin);
-      transaction.add("Buy", ptrSports);
-      transaction.print();
-      cout << "list size = 2 : " << transaction.getCurrentSize() << "\n";
-      cout << "\nTest isEmpty() should return false (0) : " 
-           << transaction.isEmpty() << "\n";
+      //Hashable* ptrCoin3 = ptrCoin->clone();
+      //Hashable* ptrSports1 = ptrSports->clone();
+      //Hashable* ptrComic1 = ptrComic->clone();
 
-      transaction.add("Sell", ptrComic);
-      transaction.add("Buy", ptrCoin2);
-      transaction.add("Sell", ptrCoin3);
-      transaction.add("Buy", ptrSports1);
-      transaction.add("Sell", ptrComic1);
-      transaction.add("Sell", ptrSports2);
-      transaction.add("Sell", ptrSports3);
-      transaction.print();
+      //Hashable* ptrSports2 = ptrSports->clone();
+      //Hashable* ptrSports3 = ptrSports->clone();
+
+      ifstream inFile("hw4customers.txt");
+      if (!inFile) {
+         cerr << "File could not be opened." << endl;
+         return 1;
+      }
+      userInventory.loadCustomers(inFile);
+      userInventory.displayAll();
+
+      // It blew up...--------------------------------------
+
+      //cout << "\nAdd Coin and Sports Card \n";
+      //transaction.add("Buy", ptrCoin);
+      //transaction.add("Buy", ptrSports);
+      //transaction.print();
+      //cout << "list size = 2 : " << transaction.getCurrentSize() << "\n";
+      //cout << "\nTest isEmpty() should return false (0) : " 
+      //     << transaction.isEmpty() << "\n";
+
+      //transaction.add("Sell", ptrComic);
+      //transaction.add("Buy", ptrCoin2);
+      //transaction.add("Sell", ptrCoin3);
+      //transaction.add("Buy", ptrSports1);
+      //transaction.add("Sell", ptrComic1);
+      //transaction.add("Sell", ptrSports2);
+      //transaction.add("Sell", ptrSports3);
+      //transaction.print();
       //----------------------------------------------------------------------
 
 
