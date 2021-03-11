@@ -90,4 +90,12 @@ public:
    *          alphabetical order.
    */
    void displayAll();
+
+   //------------------------------isCustomer-----------------------------
+   /*
+   * @pre     None.
+   * @post    Verifies if customer is an existing customer. Returns true for
+   *          existing customer, false otherwise.
+   */
+   bool isCustomer(const int custID) const;
 };

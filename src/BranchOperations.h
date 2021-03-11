@@ -32,16 +32,16 @@ private:
    
    UserManager userMgr; // Object to manage all customer transactions.
    InventoryMgr inventoryMgr; // Object to manage all inventory transactions.
-   Transaction* command[4];  // Hash table for executing commands
+   static const int ARRAYSIZE = 5;
+   Transaction* command[ARRAYSIZE];  // Hash table for executing commands
 
    //------------------------------hash----------------------------------------
    /* Takes a char and returns the index number for the command array.
    * @pre     Only capital chars and must be S, B, D, C, or H.
    * @post    Converts the char into a hash number (index of array).
+   *          Returns -1 if wrong input is provided.
    */
    int hash(const char ch) const;
-      // create a hash function that will result in B = 0, D = 1, C = 2, H = 3
-      // S = 3.
 
 public:
 
@@ -54,11 +54,6 @@ public:
    * @param   const string n
    */
    BranchOperations();
-   // Initialize createObj array.
-   // command[0] = new Buy;
-   // command[1] = new Display;
-   // command[2] = new CustomerDisplay;
-   // command[3] = new Sell;
 
    //------------------------------Destructor----------------------------------
    /* Destructor.
@@ -66,7 +61,6 @@ public:
    * @post    Deletes dynamic memory
    */
    ~BranchOperations();
-   // Delete the dynamic memory of command array
 
    //------------------------------loadCustomers-------------------------------
    /* Loads customerList with input from file.
@@ -75,7 +69,6 @@ public:
    *          customer file.
    */
    void loadCustomers(ifstream& infile);
-      // Pass the file to userMgr.loadCustomers
 
    //------------------------------loadInventory-------------------------------
    /* Loads inventory with input from file.
@@ -84,7 +77,6 @@ public:
    *          customer file.
    */
    void loadInventory(ifstream& infile);
-   // Pass the file to inventoryMgr.loadInventory method.
 
    //------------------------------loadInventory-------------------------------
    /* Executes transactions with input from file.
@@ -93,13 +85,4 @@ public:
    *          customer file.
    */
    void loadTransactions(ifstream& infile);
-      // Read one line at a time, extract the first character of each line and
-      // save as a char, this is the transaction command.
-      // - S = sell, B = Buy, D = Display, C = CustomerDisplay, H = History.
-      // Convert the rest of the text into a string.
-      
-      // Use the hash() method to get the correct index of the command array.
-      // For each command array index use the appropriate command.
-      // Example:  command[0]->Buy.execute() method and pass the string and
-      //          inventoryMgr and userMgr objects
 };

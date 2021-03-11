@@ -35,10 +35,7 @@
 using namespace std;
 
 //Testing
-#include "UserManager.h"
-#include "Coin.h"
-#include "SportsCard.h"
-#include "ComicBook.h"
+#include "BranchOperations.h"
 
 int main() {
    //-------------------------Memory Leak Code---------------------------------
@@ -50,53 +47,29 @@ int main() {
    //--------------------------End Memory Leak code----------------------------
    {
 
+      BranchOperations branchEverett;
 
-      //-------------------------Test UserManager ----------------------------
-      UserManager userInventory;
-      userInventory.displayAll();  // test empty list
-
-
-      Hashable* ptrCoin = new Coin(1913, "Liberty Nickel", 70);
-      Hashable* ptrSports = new SportsCard(1952, "Mickey Mantle", "Topps", "Very Good");
-      Hashable* ptrComic = new ComicBook(2010, "X-Men", "Marvel", "Excellent");
-
-      Hashable* ptrCoin3 = ptrCoin->clone();
-      Hashable* ptrSports1 = ptrSports->clone();
-      Hashable* ptrComic1 = ptrComic->clone();
-
-      Hashable* ptrSports2 = ptrSports->clone();
-      Hashable* ptrSports3 = ptrSports->clone();
-
-      ifstream inFile("hw4customers.txt");
-      if (!inFile) {
+      ifstream inventory("hw4inventory.txt");
+      if (!inventory) {
          cerr << "File could not be opened." << endl;
          return 1;
       }
-      userInventory.loadCustomers(inFile);
-      userInventory.displayAll();
+      ifstream customers("hw4customers.txt");
+      if (!customers) {
+         cerr << "File could not be opened." << endl;
+         return 1;
+      }
+      ifstream transactions("hw4commands.txt");
+      if (!transactions) {
+         cerr << "File could not be opened." << endl;
+         return 1;
+      }
 
-
-      cout << "\nAdd Coin and Sports Card \n";
-      userInventory.addTransaction(5, "Buy", ptrCoin);  // should output error
-      userInventory.addTransaction(1, "Buy", ptrSports);
-      userInventory.displayCustomer(999);
-      userInventory.displayCustomer(1);
-
-
-      userInventory.addTransaction(1, "Sell", ptrComic);
-      userInventory.addTransaction(1, "Sell", ptrCoin3);
-      userInventory.addTransaction(1, "Buy", ptrSports1);
-      userInventory.addTransaction(456,"Sell", ptrComic1);
-      userInventory.addTransaction(456,"Sell", ptrSports2);
-      userInventory.addTransaction(1,"Sell", ptrSports3);
+      // Load files to branch operations.
+      branchEverett.loadCustomers(customers);
+      branchEverett.loadInventory(inventory);
+      branchEverett.loadTransactions(transactions);
       
-      userInventory.displayCustomer(1);
-      userInventory.displayCustomer(456);
-      userInventory.displayCustomer(999);
-
-      cout << "\nDisplay All Transaction:\n";
-      userInventory.displayAll();
-      //----------------------------------------------------------------------
 
 
 

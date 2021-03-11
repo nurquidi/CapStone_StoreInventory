@@ -683,3 +683,4 @@ void SearchTree::sortHelper(DataNode* subTreePtr,
       sortHelper(subTreePtr->right, hashVector); // go down the right of the tree
    }
 }
+

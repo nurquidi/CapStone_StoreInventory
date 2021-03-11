@@ -11,6 +11,7 @@
 */
 #pragma once
 #include "Hashable.h"
+#include "Transaction.h"
 #include "InventoryMgr.h"
 #include "UserManager.h"
 #include "FactoryHashable.h"
@@ -30,7 +31,7 @@ public:
    * @pre     None.
    * @post    Releases any dynamic memory used.
    */
-   ~Buy();
+   ~Buy() {};
 
    //------------------------------execute-------------------------------------
    /* Executes a buy command.
@@ -44,17 +45,5 @@ public:
    */
    void execute(UserManager& userObj, InventoryMgr& invObj,
       string data);
-   // Can use ifstream to parse through the data, remove customer ID and 
-   // store as an int, next remove the item type and store as a char. Remove
-   // the comma and space after the item type and create a string with 
-   // the rest of the text.
-
-   // Use the factoryobj.createIt method and pass the item type and string
-   // as parameters. Save the pointer of the new Hashable object it creates.
-
-   // Use the built-in clone method of the Hashable object to create a clone
-
-   // Pass one pointer to invObj.buyItem() method.
-   // Pass the second pointer to userOjb.addTransaction() method.
 
 };

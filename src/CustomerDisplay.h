@@ -11,6 +11,7 @@
 */
 #pragma once
 #include "Hashable.h"
+#include "Transaction.h"
 #include "InventoryMgr.h"
 #include "UserManager.h"
 #include <string>
@@ -25,18 +26,17 @@ public:
    * @pre     None.
    * @post    Releases any dynamic memory used.
    */
-   ~CustomerDisplay();
+   ~CustomerDisplay() {};
 
    //------------------------------execute-------------------------------------
-   /* Executes a display command for the store inventory.
+   /* Executes a display command for user transactions.
    * @pre     Customer must be an existing customer. The data string should
-   *          contain a valid 3 digit customer ID.
-   * @post    Displays transaction history of the customer in chronological 
+   *          contain a valid 3 digit customer ID. Customer ID must be between
+   *          0 and 999.
+   * @post    Displays transaction history of the customer in chronological
    *          order.
    */
    void execute(UserManager& userObj, InventoryMgr& invObj,
       string data);
-   // Convert the string to an int.
-   // Use the userObj.displayCustomer() to display all the inventory contents.
 
 };

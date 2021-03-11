@@ -14,6 +14,7 @@
 
 #pragma once
 #include "Hashable.h"
+#include "Transaction.h"
 #include "InventoryMgr.h"
 #include "UserManager.h"
 #include <string>
@@ -28,7 +29,7 @@ public:
    * @pre     None.
    * @post    Releases any dynamic memory used.
    */
-   ~History();
+   ~History() {};
 
    //------------------------------execute-------------------------------------
    /* Executes a display command for the store inventory.
@@ -41,8 +42,6 @@ public:
    */
    void execute(UserManager& userObj, InventoryMgr& invObj,
       string data);
-      // The data string should be empty and is ignored.
-      // Use the userObj.displayAll method.
 
 };
 

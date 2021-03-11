@@ -166,6 +166,8 @@
     <ClInclude Include="src\UserManager.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\BranchOperations.cpp" />
+    <ClCompile Include="src\Buy.cpp" />
     <ClCompile Include="src\Coin.cpp" />
     <ClCompile Include="src\Collectible.cpp" />
     <ClCompile Include="src\ComicBook.cpp" />
@@ -174,16 +176,21 @@
     <ClCompile Include="src\CreateCustomer.cpp" />
     <ClCompile Include="src\CreateSportsCard.cpp" />
     <ClCompile Include="src\Customer.cpp" />
+    <ClCompile Include="src\CustomerDisplay.cpp" />
+    <ClCompile Include="src\Display.cpp" />
     <ClCompile Include="src\FactoryHashable.cpp" />
+    <ClCompile Include="src\History.cpp" />
     <ClCompile Include="src\InventoryMgr.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\SearchTree.cpp" />
+    <ClCompile Include="src\Sell.cpp" />
     <ClCompile Include="src\SportsCard.cpp" />
     <ClCompile Include="src\TransactionList.cpp" />
     <ClCompile Include="src\User.cpp" />
     <ClCompile Include="src\UserManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="hw4commands.txt" />
     <Text Include="hw4customers.txt" />
     <Text Include="hw4inventory.txt" />
   </ItemGroup>

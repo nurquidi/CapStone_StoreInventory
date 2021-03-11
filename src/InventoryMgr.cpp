@@ -147,16 +147,17 @@ void InventoryMgr::loadHelper(char c, int count, string data) {
 /*
 * @pre     Must be existing item in inventory.
 * @post    Searches for the item and increments the count.
+*          Returns true if sucessful.
 *          Memory management: Passed pointer is deleted and set to nullptr.
 */
-void InventoryMgr::buyItem(const char code, Hashable* item) {
+bool InventoryMgr::buyItem(const char code, Hashable* item) {
    // Check if a nullptr is passed.
    if (item != nullptr) {
       int index = hash(code); // get index for hash table
       if (index != -1) { // check for valid code
          // if hashTable has a nullptr it means that the inventory is empty
          if (hashTable[index] != nullptr) {
-            hashTable[index]->increaseCount(item);
+            return hashTable[index]->increaseCount(item);
             // Memory Management - SearchTree destroys the passed object and 
             // sets the pointer to item == nullptr;
          }
@@ -164,14 +165,17 @@ void InventoryMgr::buyItem(const char code, Hashable* item) {
             // Item is not in inventory
             delete item;  // release memory
             item = nullptr;
+            return false;
          }
       }
       else {
          // Invalid code, delete pointer and exit.
          delete item;  // release memory
          item = nullptr;
+         return false;
       }
    }
+   return false;
 }
 
 //------------------------------sellItem------------------------------------
@@ -179,16 +183,17 @@ void InventoryMgr::buyItem(const char code, Hashable* item) {
 * @pre     Must be existing item in inventory.
 * @post    Searches for the item and decreases the count. Count cannot be
 *          lower than 0.
+*          Returns true if sucessful.
 *          Memory management: Passed pointer is deleted and set to nullptr.
 */
-void InventoryMgr::sellItem(const char code, Hashable* item) {
+bool InventoryMgr::sellItem(const char code, Hashable* item) {
    // Check if a nullptr is passed.
    if (item != nullptr) {
       int index = hash(code); // get index for hash table
       if (index != -1) { // check for valid code
          // if hashTable has a nullptr it means that the inventory is empty
          if (hashTable[index] != nullptr) {
-            hashTable[index]->decreaseCount(item);
+            return hashTable[index]->decreaseCount(item);
             // Memory Management - SearchTree destroys the passed object and 3
             // sets the pointer to item == nullptr;
          }
@@ -196,14 +201,17 @@ void InventoryMgr::sellItem(const char code, Hashable* item) {
             // Item is not in inventory
             delete item;  // release memory
             item = nullptr;
+            return false;
          }
       }
       else {
          // Invalid code, delete pointer and exit.
          delete item;  // release memory
          item = nullptr;
+         return false;
       }
    }
+   return false;
 }
 
 //------------------------------displayAll-----------------------------
@@ -234,3 +242,5 @@ void InventoryMgr::displayAll() {
       cout << *hashTable[hash('S')]; // prints out in sorted order.
    }
 }
+
+

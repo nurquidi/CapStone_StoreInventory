@@ -154,4 +154,18 @@ void UserManager::displayAll() {
    }
 }
 
+//------------------------------isCustomer-----------------------------
+/*
+* @pre     None.
+* @post    Verifies if customer is an existing customer. Returns true for
+*          existing customer, false otherwise.
+*/
+bool UserManager::isCustomer(const int custID) const {
+   if (custID >= 0 && custID < 1000) {  // check valid range
+      // if equal to nullptr customer does not exist.
+      return hashTable[custID] != nullptr; 
+   }
+   return false;
+}
+
 

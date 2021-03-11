@@ -32,6 +32,7 @@ private:
    /* Takes a char and returns the index number for the createOjb array.
    * @pre     Only capital chars and must be C, M or S
    * @post    Converts the char into a hash number (index of array).
+   *          Returns -1 if wrong input is provided.
    */
    int hash(const char ch) const;
 
@@ -84,18 +85,20 @@ public:
    /*
    * @pre     Must be existing item in inventory.
    * @post    Searches for the item and increments the count.
+   *          Returns true if sucessful.
    *          Memory management: Passed pointer is deleted and set to nullptr.
    */
-   void buyItem(const char code, Hashable* item);
+   bool buyItem(const char code, Hashable* item);
 
    //------------------------------sellItem------------------------------------
    /*
    * @pre     Must be existing item in inventory.
    * @post    Searches for the item and decreases the count. Count cannot be
    *          lower than 0.
+   *          Returns true if sucessful.
    *          Memory management: Passed pointer is deleted and set to nullptr.
    */
-   void sellItem(const char code, Hashable* item);
+   bool sellItem(const char code, Hashable* item);
 
    //------------------------------displayAll-----------------------------
    /*
