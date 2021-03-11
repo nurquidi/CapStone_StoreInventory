@@ -106,14 +106,14 @@ bool TransactionList::add(string transaction,
 */
 void TransactionList::print() const {
    // Print user information first
+   cout << "Transaction History for: " << userInfo << "\n";
    if (!isEmpty()) {
-      cout << "Customer Information : " << userInfo << "\n";
-
       // Print from front to back
       Node* ptr = headPtr;
       while (ptr != nullptr) {
-         cout << setw(45) << left << ptr->item->toString() << " : Quantity 1"
-            << " : " << "Transaction " << ptr->type << "\n";
+         cout << "   " << setw(45) << left << ptr->item->toString() 
+              << " : Quantity 1" << " : " << "Transaction " << ptr->type 
+              << "\n";
          ptr = ptr->next;
       }
    }

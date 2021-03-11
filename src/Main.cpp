@@ -56,17 +56,16 @@ int main() {
       userInventory.displayAll();  // test empty list
 
 
-      //Hashable* ptrCoin = new Coin(1913, "Liberty Nickel", 70);
-      //Hashable* ptrSports = new SportsCard(1952, "Mickey Mantle", "Topps", "Very Good");
-      //Hashable* ptrComic = new ComicBook(2010, "X-Men", "Marvel", "Excellent");
-      //Hashable* ptrCoin2 = ptrCoin->create(); // empty coin
+      Hashable* ptrCoin = new Coin(1913, "Liberty Nickel", 70);
+      Hashable* ptrSports = new SportsCard(1952, "Mickey Mantle", "Topps", "Very Good");
+      Hashable* ptrComic = new ComicBook(2010, "X-Men", "Marvel", "Excellent");
 
-      //Hashable* ptrCoin3 = ptrCoin->clone();
-      //Hashable* ptrSports1 = ptrSports->clone();
-      //Hashable* ptrComic1 = ptrComic->clone();
+      Hashable* ptrCoin3 = ptrCoin->clone();
+      Hashable* ptrSports1 = ptrSports->clone();
+      Hashable* ptrComic1 = ptrComic->clone();
 
-      //Hashable* ptrSports2 = ptrSports->clone();
-      //Hashable* ptrSports3 = ptrSports->clone();
+      Hashable* ptrSports2 = ptrSports->clone();
+      Hashable* ptrSports3 = ptrSports->clone();
 
       ifstream inFile("hw4customers.txt");
       if (!inFile) {
@@ -76,24 +75,27 @@ int main() {
       userInventory.loadCustomers(inFile);
       userInventory.displayAll();
 
-      // It blew up...--------------------------------------
 
-      //cout << "\nAdd Coin and Sports Card \n";
-      //transaction.add("Buy", ptrCoin);
-      //transaction.add("Buy", ptrSports);
-      //transaction.print();
-      //cout << "list size = 2 : " << transaction.getCurrentSize() << "\n";
-      //cout << "\nTest isEmpty() should return false (0) : " 
-      //     << transaction.isEmpty() << "\n";
+      cout << "\nAdd Coin and Sports Card \n";
+      userInventory.addTransaction(5, "Buy", ptrCoin);  // should output error
+      userInventory.addTransaction(1, "Buy", ptrSports);
+      userInventory.displayCustomer(999);
+      userInventory.displayCustomer(1);
 
-      //transaction.add("Sell", ptrComic);
-      //transaction.add("Buy", ptrCoin2);
-      //transaction.add("Sell", ptrCoin3);
-      //transaction.add("Buy", ptrSports1);
-      //transaction.add("Sell", ptrComic1);
-      //transaction.add("Sell", ptrSports2);
-      //transaction.add("Sell", ptrSports3);
-      //transaction.print();
+
+      userInventory.addTransaction(1, "Sell", ptrComic);
+      userInventory.addTransaction(1, "Sell", ptrCoin3);
+      userInventory.addTransaction(1, "Buy", ptrSports1);
+      userInventory.addTransaction(456,"Sell", ptrComic1);
+      userInventory.addTransaction(456,"Sell", ptrSports2);
+      userInventory.addTransaction(1,"Sell", ptrSports3);
+      
+      userInventory.displayCustomer(1);
+      userInventory.displayCustomer(456);
+      userInventory.displayCustomer(999);
+
+      cout << "\nDisplay All Transaction:\n";
+      userInventory.displayAll();
       //----------------------------------------------------------------------
 
 
@@ -684,4 +686,51 @@ int main() {
 //transaction.add("Sell", ptrSports2);
 //transaction.add("Sell", ptrSports3);
 //transaction.print();
+//----------------------------------------------------------------------
+
+//-------------------------Test UserManager ----------------------------
+//UserManager userInventory;
+//userInventory.displayAll();  // test empty list
+//
+//
+//Hashable* ptrCoin = new Coin(1913, "Liberty Nickel", 70);
+//Hashable* ptrSports = new SportsCard(1952, "Mickey Mantle", "Topps", "Very Good");
+//Hashable* ptrComic = new ComicBook(2010, "X-Men", "Marvel", "Excellent");
+//
+//Hashable* ptrCoin3 = ptrCoin->clone();
+//Hashable* ptrSports1 = ptrSports->clone();
+//Hashable* ptrComic1 = ptrComic->clone();
+//
+//Hashable* ptrSports2 = ptrSports->clone();
+//Hashable* ptrSports3 = ptrSports->clone();
+//
+//ifstream inFile("hw4customers.txt");
+//if (!inFile) {
+//   cerr << "File could not be opened." << endl;
+//   return 1;
+//}
+//userInventory.loadCustomers(inFile);
+//userInventory.displayAll();
+//
+//
+//cout << "\nAdd Coin and Sports Card \n";
+//userInventory.addTransaction(5, "Buy", ptrCoin);  // should output error
+//userInventory.addTransaction(1, "Buy", ptrSports);
+//userInventory.displayCustomer(999);
+//userInventory.displayCustomer(1);
+//
+//
+//userInventory.addTransaction(1, "Sell", ptrComic);
+//userInventory.addTransaction(1, "Sell", ptrCoin3);
+//userInventory.addTransaction(1, "Buy", ptrSports1);
+//userInventory.addTransaction(456, "Sell", ptrComic1);
+//userInventory.addTransaction(456, "Sell", ptrSports2);
+//userInventory.addTransaction(1, "Sell", ptrSports3);
+//
+//userInventory.displayCustomer(1);
+//userInventory.displayCustomer(456);
+//userInventory.displayCustomer(999);
+//
+//cout << "\nDisplay All Transaction:\n";
+//userInventory.displayAll();
 //----------------------------------------------------------------------

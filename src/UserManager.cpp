@@ -65,7 +65,6 @@ void UserManager::loadCustomers(ifstream& infile) {
       int numID = stoi(ID);
 
       if (numID >= 0 && numID < 1000) { // check for valid ID range.
-         getline(infile, customer, '\n'); // get customer name
 
          Hashable* temp = factoryObj.createIt('A', customer); // A = customer
          // Load into SearchTree

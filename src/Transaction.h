@@ -25,7 +25,7 @@ public:
    * @pre     None.
    * @post    Releases any dynamic memory used.
    */
-   virtual ~Transaction() = 0;
+   virtual ~Transaction() = 0 {};
 
    //------------------------------execute--------------------------------------
    /* Executes a command.
