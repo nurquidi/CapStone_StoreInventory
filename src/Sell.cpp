@@ -48,6 +48,7 @@ void Sell::execute(UserManager& userObj, InventoryMgr& invObj,
    s.get(); // throw away space
    getline(s, temp, ','); // get object code
    code = temp[0];
+   s.get(); // throw away space
    getline(s, objData); // get rest of data.
 
    // create transaction object
@@ -66,13 +67,13 @@ void Sell::execute(UserManager& userObj, InventoryMgr& invObj,
             userObj.addTransaction(custID, "Buy", transactionPtr2);
          }
          else {
-            cerr << "Error, not enough inventory to cover transaction.";
+            cerr << "\nError, not enough inventory to cover transaction.\n";
             delete transactionPtr2; // release memory
             transactionPtr2 = nullptr;
          }
       }
       else {
-         cerr << "Error, customer is not on file.\n";
+         cerr << "\nError, customer is not on file.\n";
       }
    }
 }

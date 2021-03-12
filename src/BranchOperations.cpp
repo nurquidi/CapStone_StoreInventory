@@ -29,7 +29,7 @@ int BranchOperations::hash(const char ch) const {
    if (ch == 'S') return 4;
 
    // wrong input proviced
-   cerr << "Wrong input data provided for method hash(char).\n";
+   cerr << "\nWrong input data provided for method hash(char).\n";
    return -1;
 }
 
@@ -115,12 +115,18 @@ void BranchOperations::loadTransactions(ifstream& infile) {
             infile.get(); // get rid of comma
             infile.get(); // get rid of space
             getline(infile, objData, '\n'); // get rest of data.
+            // execute commands.
+            command[index]->execute(userMgr, inventoryMgr, objData);
          }
-         // execute commands.
-         command[index]->execute(userMgr, inventoryMgr, objData);
+         else {
+            getline(infile, objData, '\n'); // get rest of data.
+            // execute commands.
+            command[index]->execute(userMgr, inventoryMgr, objData);
+         }
       }
       else {
-         cerr << "Error, incorrect transaction code provide.\n";
+         cerr << "\nError, incorrect transaction code provided.\n";
+         getline(infile, objData, '\n'); // get rest of data.
       }
    }
 

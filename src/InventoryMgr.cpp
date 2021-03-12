@@ -27,7 +27,7 @@ int InventoryMgr::hash(const char ch) const {
    if (ch == 'S') return 2;
 
    // wrong input proviced
-   cerr << "Wrong input data provided for method hash(char).\n";
+   cerr << "\nWrong input data provided for method hash(char).\n";
    return -1;
 }
 

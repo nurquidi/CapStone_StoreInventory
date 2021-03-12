@@ -22,10 +22,10 @@
 */
 Coin::Coin(const int yearC, const string typeC, const int gradeC) {
    if (yearC < 0 || yearC > 9999) {
-      cerr << "Coin year " << yearC << " could be incorrect.\n";
+      cerr << "\nCoin year " << yearC << " could be incorrect.\n";
    }
    if (gradeC < 0 || gradeC > 100) {
-      cerr << "Coin grade " << gradeC << " could be incorrect.\n";
+      cerr << "\nCoin grade " << gradeC << " could be incorrect.\n";
    }
    setYear(yearC); // year is stored in base class
    type = typeC;
@@ -92,7 +92,7 @@ bool Coin::operator<(const Hashable& rhs) const {
    // Use dynamic casting to cast down to Coin, check for nullptr.
    const Coin* item = dynamic_cast<const Coin*>(&rhs);
    if (item == nullptr) {
-      cerr << "Right hand side object is not a Coin object" << endl;
+      cerr << "\nRight hand side object is not a Coin object\n" << endl;
       return false;
    }
    else {
@@ -125,7 +125,7 @@ bool Coin::operator==(const Hashable& rhs) const {
    // Use dynamic casting to cast down to Coin, check for nullptr.
    const Coin* item = dynamic_cast<const Coin*>(&rhs);
    if (item == nullptr) {
-      cerr << "Right hand side object is not a Coin object" << endl;
+      cerr << "\nRight hand side object is not a Coin object\n" << endl;
       return false;
    }
    else {

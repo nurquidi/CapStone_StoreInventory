@@ -106,7 +106,7 @@ bool TransactionList::add(string transaction,
 */
 void TransactionList::print() const {
    // Print user information first
-   cout << "Transaction History for: " << userInfo << "\n";
+   cout << "\nTransaction History for: " << userInfo << "\n";
    if (!isEmpty()) {
       // Print from front to back
       Node* ptr = headPtr;

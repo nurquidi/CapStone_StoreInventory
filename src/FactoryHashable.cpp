@@ -29,7 +29,7 @@ int FactoryHashable::hash(const char ch) const
    if (ch == 'S') return 3;
 
    // Output error message and return -1
-   cerr << "Wrong input data provided for method hash(char).\n";
+   cerr << "\nWrong input data provided for method hash(char).\n";
    return -1;
 }
 

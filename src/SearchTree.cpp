@@ -62,8 +62,9 @@ ostream& SearchTree::inOrder(ostream& outStream,
    // base case: subTreePtr == nullptr
    if (subTreePtr != nullptr) { // If tree not empty.
       inOrder(outStream, subTreePtr->left); // go down the left of the tree
-      outStream << setw(45) << left << subTreePtr->hashObjPtr->toString() 
-         << ": Quantity " << setw(4) << left << subTreePtr->count << "\n";
+      outStream << "   " << setw(50) << left 
+                << subTreePtr->hashObjPtr->toString() << ": Quantity " 
+                << setw(4) << left << subTreePtr->count << "\n";
       inOrder(outStream, subTreePtr->right); // go down the right of the tree
    }
    return outStream;

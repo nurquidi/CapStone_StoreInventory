@@ -74,7 +74,7 @@ void UserManager::loadCustomers(ifstream& infile) {
          hashTable[numID] = new TransactionList(customer);
       }
       else {
-         cerr << "Error, customer ID is out of range.\n";
+         cerr << "\nError, customer ID is out of range.\n";
       }
    }
 }
@@ -97,13 +97,13 @@ void UserManager::addTransaction(const int custID, string transaction,
          hashTable[custID]->add(transaction, item);
       }
       else {
-         cerr << "Error, customer is not on file.\n";
+         cerr << "\nError, customer is not on file.\n";
          delete item; // release memory to avoid leaks.
          item = nullptr;
       }
    }
    else {
-      cerr << "Error, customer is not on file.\n";
+      cerr << "\nError, customer is not on file.\n";
       delete item; // release memory to avoid leaks.
       item = nullptr;
    }
@@ -141,7 +141,7 @@ void UserManager::displayAll() {
       // Use dynamic casting to cast down to Customer, check for nullptr.
       const Customer* custmr = dynamic_cast<const Customer*>(v);
       if (custmr == nullptr) {
-         cerr << "Object is not a Customer object" << endl;
+         cerr << "\nObject is not a Customer object\n" << endl;
       }
       else {
          int custID = custmr->getID();
