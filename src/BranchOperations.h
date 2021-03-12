@@ -32,7 +32,7 @@ private:
    
    UserManager userMgr; // Object to manage all customer transactions.
    InventoryMgr inventoryMgr; // Object to manage all inventory transactions.
-   static const int ARRAYSIZE = 5;
+   static const int ARRAYSIZE = 26;
    Transaction* command[ARRAYSIZE];  // Hash table for executing commands
 
    //------------------------------hash----------------------------------------

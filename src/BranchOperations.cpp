@@ -20,17 +20,18 @@
 *          Returns -1 if wrong input is provided.
 */
 int BranchOperations::hash(const char ch) const {
-   // create a hash function that will result in B = 0, D = 1, C = 2, H = 3
-   // S = 4.
-   if (ch == 'B') return 0;
-   if (ch == 'D') return 1;
-   if (ch == 'C') return 2;
-   if (ch == 'H') return 3;
-   if (ch == 'S') return 4;
+   // All codes are in capital letters, so use A = 65 to subtract from code 
+   // letters to designate the appropriate index
+   // Valid codes in use are B, C, D, H, S
+   int index = int(ch - 'A');
+   
+   // check command array to see if this code is in use
+   if (command[index] != nullptr) return index;
 
    // wrong input proviced
    cerr << "\nWrong input data provided for method hash(char).\n";
    return -1;
+
 }
 
 //------------------------------Constructor---------------------------------
@@ -43,11 +44,16 @@ int BranchOperations::hash(const char ch) const {
 */
 BranchOperations::BranchOperations() {
    // Initialize createObj array.
-    command[0] = new Buy;
-    command[1] = new Display;
-    command[2] = new CustomerDisplay;
-    command[3] = new History;
-    command[4] = new Sell;
+   for (int i = 0; i < ARRAYSIZE; i++) {
+      command[i] = nullptr;
+   }
+
+   // the following are commands in use
+   command[int('B'-'A')] = new Buy;
+   command[int('D'-'A')] = new Display;
+   command[int('C'-'A')] = new CustomerDisplay;
+   command[int('H'-'A')] = new History;
+   command[int('S'-'A')] = new Sell;
 }
 
 //------------------------------Destructor----------------------------------
