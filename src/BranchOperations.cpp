@@ -64,7 +64,7 @@ BranchOperations::BranchOperations() {
 BranchOperations::~BranchOperations() {
    // Delete the dynamic memory of command array
    for (int i = 0; i < ARRAYSIZE; i++) {
-      delete command[i]; // delete the SearchTree objects
+      delete command[i]; // delete the objects
       command[i] = nullptr;
    }
 }

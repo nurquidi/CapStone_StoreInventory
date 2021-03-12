@@ -1,3 +1,8 @@
 001, Michael Jordan
 456, Keyser Soze
 999, Pele
+-1, Invalid Customer
+1005, Invalid Customer
+050, Michael Jordy
+5, A - I'm first
+61, Z - I'm last

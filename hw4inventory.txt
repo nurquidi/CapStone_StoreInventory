@@ -5,3 +5,5 @@ C, 2, 2010, Excellent, X-Men, Marvel
 Z, 4, 1986, Raging, Metallica, Master of Puppets
 S, 9, 1989, Near Mint, Ken Griffey Jr., Upper Deck
 S, 1, 1952, Very Good, Mickey Mantle, Topps
+S, 0, 1930, OK, Mickey Mantle, Topps
+S, 0, 1930, OK, Mickey Mantle, Blah blah

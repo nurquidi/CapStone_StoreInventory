@@ -74,6 +74,8 @@ void Sell::execute(UserManager& userObj, InventoryMgr& invObj,
       }
       else {
          cerr << "\nError, customer is not on file.\n";
+         delete transactionPtr; // release memory
+         transactionPtr = nullptr;
       }
    }
 }

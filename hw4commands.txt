@@ -1,7 +1,18 @@
+D
+H
 S, 001, S, 1989, Near Mint, Ken Griffey Jr., Upper Deck
 B, 456, M, 1913, 70, Liberty Nickel
-C, 999
 D
+C, 0
 X, 999, Z, 1986, Raging, Metallica, Master of Puppets
 S, 000, Q, 2112, Gnarly, Windows, Microsoft
+H
+S, 000, C, 1938, Mint, Superman, DC
+S, 999, C, 1938, Mint, Superman, DC
+S, 001, C, 1938, Mint, Superman, DC
+D
+H
+B, 300, M, 2001, 65, Lincoln Cent
+B, 456, M, 1950, 30, Invalid Transaction
+D
 H

@@ -63,6 +63,7 @@ FactoryHashable::~FactoryHashable() {
    // cycle through createObj array and delete objects
    for (int i = 0; i < ARRAYSIZE; i++) {
       delete createObj[i];
+      createObj[i] = nullptr;
    }
 }
 

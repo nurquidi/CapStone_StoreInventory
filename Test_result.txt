@@ -1,0 +1,133 @@
+//test result
+
+Error, customer ID is out of range.
+
+Error, customer ID is out of range.
+
+Wrong input data provided for method hash(char).
+
+Coin Inventory:
+   Liberty Nickel, 1913, 70                          : Quantity 10
+   Lincoln Cent, 2001, 65                            : Quantity 3
+
+Comic Book Inventory:
+   DC, Superman, 1938, Mint                          : Quantity 1
+   Marvel, X-Men, 2010, Excellent                    : Quantity 2
+
+Sports Cards Inventory:
+   Ken Griffey Jr., 1989, Upper Deck, Near Mint      : Quantity 9
+   Mickey Mantle, 1930, Blah blah, OK                : Quantity 0
+   Mickey Mantle, 1930, Topps, OK                    : Quantity 0
+   Mickey Mantle, 1952, Topps, Very Good             : Quantity 1
+
+Transaction History for: 5, A - I'm first
+
+Transaction History for: 456, Keyser Soze
+
+Transaction History for: 001, Michael Jordan
+
+Transaction History for: 050, Michael Jordy
+
+Transaction History for: 999, Pele
+
+Transaction History for: 61, Z - I'm last
+
+Coin Inventory:
+   Liberty Nickel, 1913, 70                          : Quantity 11
+   Lincoln Cent, 2001, 65                            : Quantity 3
+
+Comic Book Inventory:
+   DC, Superman, 1938, Mint                          : Quantity 1
+   Marvel, X-Men, 2010, Excellent                    : Quantity 2
+
+Sports Cards Inventory:
+   Ken Griffey Jr., 1989, Upper Deck, Near Mint      : Quantity 8
+   Mickey Mantle, 1930, Blah blah, OK                : Quantity 0
+   Mickey Mantle, 1930, Topps, OK                    : Quantity 0
+   Mickey Mantle, 1952, Topps, Very Good             : Quantity 1
+
+Wrong input data provided for method hash(char).
+
+Error, incorrect transaction code provided.
+
+Wrong input data provided for method hash(char).
+
+Transaction History for: 5, A - I'm first
+
+Transaction History for: 456, Keyser Soze
+   Liberty Nickel, 1913, 70                      : Quantity 1 : Transaction Sell
+
+Transaction History for: 001, Michael Jordan
+   Ken Griffey Jr., 1989, Upper Deck, Near Mint  : Quantity 1 : Transaction Buy
+
+Transaction History for: 050, Michael Jordy
+
+Transaction History for: 999, Pele
+
+Transaction History for: 61, Z - I'm last
+
+Error, customer is not on file.
+
+Error, not enough inventory to cover transaction.
+
+Coin Inventory:
+   Liberty Nickel, 1913, 70                          : Quantity 11
+   Lincoln Cent, 2001, 65                            : Quantity 3
+
+Comic Book Inventory:
+   DC, Superman, 1938, Mint                          : Quantity 0
+   Marvel, X-Men, 2010, Excellent                    : Quantity 2
+
+Sports Cards Inventory:
+   Ken Griffey Jr., 1989, Upper Deck, Near Mint      : Quantity 8
+   Mickey Mantle, 1930, Blah blah, OK                : Quantity 0
+   Mickey Mantle, 1930, Topps, OK                    : Quantity 0
+   Mickey Mantle, 1952, Topps, Very Good             : Quantity 1
+
+Transaction History for: 5, A - I'm first
+
+Transaction History for: 456, Keyser Soze
+   Liberty Nickel, 1913, 70                      : Quantity 1 : Transaction Sell
+
+Transaction History for: 001, Michael Jordan
+   Ken Griffey Jr., 1989, Upper Deck, Near Mint  : Quantity 1 : Transaction Buy
+
+Transaction History for: 050, Michael Jordy
+
+Transaction History for: 999, Pele
+   DC, Superman, 1938, Mint                      : Quantity 1 : Transaction Buy
+
+Transaction History for: 61, Z - I'm last
+
+Error, customer is not on file.
+
+Error, not enough inventory to cover transaction.
+
+Coin Inventory:
+   Liberty Nickel, 1913, 70                          : Quantity 11
+   Lincoln Cent, 2001, 65                            : Quantity 3
+
+Comic Book Inventory:
+   DC, Superman, 1938, Mint                          : Quantity 0
+   Marvel, X-Men, 2010, Excellent                    : Quantity 2
+
+Sports Cards Inventory:
+   Ken Griffey Jr., 1989, Upper Deck, Near Mint      : Quantity 8
+   Mickey Mantle, 1930, Blah blah, OK                : Quantity 0
+   Mickey Mantle, 1930, Topps, OK                    : Quantity 0
+   Mickey Mantle, 1952, Topps, Very Good             : Quantity 1
+
+Transaction History for: 5, A - I'm first
+
+Transaction History for: 456, Keyser Soze
+   Liberty Nickel, 1913, 70                      : Quantity 1 : Transaction Sell
+
+Transaction History for: 001, Michael Jordan
+   Ken Griffey Jr., 1989, Upper Deck, Near Mint  : Quantity 1 : Transaction Buy
+
+Transaction History for: 050, Michael Jordy
+
+Transaction History for: 999, Pele
+   DC, Superman, 1938, Mint                      : Quantity 1 : Transaction Buy
+
+Transaction History for: 61, Z - I'm last
