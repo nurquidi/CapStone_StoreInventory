@@ -22,7 +22,7 @@ using namespace std;
 class FactoryHashable
 {
 private:
-   static const int ARRAYSIZE = 4;
+   static const int ARRAYSIZE = 26;
    CreateObject* createObj[ARRAYSIZE];  // Hash table
    
    //------------------------------hash----------------------------------------

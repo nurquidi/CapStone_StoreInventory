@@ -19,14 +19,14 @@
 */
 int FactoryHashable::hash(const char ch) const
 {
-   // create a hash function that will result in A = 0, C = 1, M = 2, S = 3
-   // This is a very simple example of a hash function, so use switch
-   // statements to return the correct code.
+   // All codes are in capital letters, so use A = 65 to subtract from code 
+   // letters to designate the appropriate index
+   // Valid codes in use are A, C, M, and S
 
-   if (ch == 'A') return 0;
-   if (ch == 'C') return 1;
-   if (ch == 'M') return 2;
-   if (ch == 'S') return 3;
+   int index = int(ch - 'A');
+
+   // check command array to see if this code is in use
+   if (createObj[index] != nullptr) return index;
 
    // Output error message and return -1
    cerr << "\nWrong input data provided for method hash(char).\n";
@@ -42,11 +42,16 @@ int FactoryHashable::hash(const char ch) const
 * @param   const string n
 */
 FactoryHashable::FactoryHashable() {
+   // initialize createObj array
+   for (int i = 0; i < ARRAYSIZE; i++) {
+      createObj[i] = nullptr;
+   }
+   
    // Initialize createObj array.
-   createObj[0] = new CreateCustomer;
-   createObj[1] = new CreateComicBook;
-   createObj[2] = new CreateCoin;
-   createObj[3] = new CreateSportsCard;
+   createObj[int('A' - 'A')] = new CreateCustomer;
+   createObj[int('C' - 'A')] = new CreateComicBook;
+   createObj[int('M' - 'A')] = new CreateCoin;
+   createObj[int('S' - 'A')] = new CreateSportsCard;
 }
 
 //------------------------------Destructor----------------------------------
