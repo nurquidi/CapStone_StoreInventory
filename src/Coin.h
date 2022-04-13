@@ -3,7 +3,6 @@
  * This represents a collectible coin for the store.
  * @author Nestor Urquidi
  * @date 02/22/2021
- * CSS 502B
  * ----------------------------------------------------------------------------
  * Coin Class:
  * This coin class is derived from the Collectible class. It stores the type,
