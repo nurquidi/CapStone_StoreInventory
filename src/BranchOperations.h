@@ -3,7 +3,6 @@
  * Manager class that handles inventory and customer transactions for a store.
  * @author Nestor Urquidi
  * @date 02/22/2021
- * CSS 502B
  * ----------------------------------------------------------------------------
  * BranchOperations Class:
  * This is the top level manager class. It instatiates a UserManager class 
