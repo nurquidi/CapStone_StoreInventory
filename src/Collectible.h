@@ -3,7 +3,6 @@
  * Generic Collectible class.
  * @author Nestor Urquidi
  * @date 02/22/2021
- * CSS 502B
  * ----------------------------------------------------------------------------
  * Collectible Class:
  * Simple generic Collectible class that contains the items year. This class
