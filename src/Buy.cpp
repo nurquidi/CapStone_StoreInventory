@@ -3,7 +3,6 @@
  * Command class for executing buys.
  * @author Nestor Urquidi
  * @date 02/22/2021
- * CSS 502B
  * ----------------------------------------------------------------------------
  * Buy Command Class:
  * Executes a buy, this adds an item to store inventory and adds a
